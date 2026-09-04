@@ -1,0 +1,395 @@
+{
+  "cases": 10000,
+  "class_definitions": [
+    {
+      "deck": {
+        "L": 11,
+        "W": 9
+      },
+      "elements": [
+        "W",
+        "L"
+      ],
+      "hp": 30,
+      "id": "tide",
+      "lines": [
+        "Water builds Tide, up to 3.",
+        "Light spends Tide to boost its spell.",
+        "Each Tide: +2 power or +1 draw."
+      ],
+      "name": "Tidecaller",
+      "role": "Patient combination caster",
+      "trait": "Ebb & Flow"
+    },
+    {
+      "deck": {
+        "A": 6,
+        "F": 14
+      },
+      "elements": [
+        "F",
+        "A"
+      ],
+      "hp": 28,
+      "id": "pyro",
+      "lines": [
+        "Fire gains +1 Heat and hits harder.",
+        "At 4+ Heat, Fire costs 2 HP.",
+        "Air vents Heat into healing."
+      ],
+      "name": "Pyromancer",
+      "role": "A volatile damage engine",
+      "trait": "Heat"
+    },
+    {
+      "deck": {
+        "B": 12,
+        "D": 8
+      },
+      "elements": [
+        "D",
+        "B"
+      ],
+      "hp": 22,
+      "id": "night",
+      "lines": [
+        "Blood spends HP for stronger spells.",
+        "Dark attacks steal half their damage.",
+        "Soul Feast steals all of its damage."
+      ],
+      "name": "Nightbinder",
+      "role": "Life is a resource",
+      "trait": "Blood Price"
+    }
+  ],
+  "elapsed_seconds": 252.252,
+  "encounters": [
+    {
+      "casts": 1,
+      "deck": {
+        "B": 8,
+        "D": 12
+      },
+      "flavor": "A flutter in the dusk. Your first spell awaits.",
+      "hp": 18,
+      "intent": "Small attacks \u00b7 one cast",
+      "lesson": "A small beginning",
+      "name": "Bat",
+      "place": "THE HOLLOW",
+      "portrait": "bat",
+      "reward": "bolt"
+    },
+    {
+      "casts": 1,
+      "deck": {
+        "D": 8,
+        "E": 12
+      },
+      "flavor": "A crooked grin, and a pocket full of stones.",
+      "hp": 28,
+      "intent": "Stronger patterns \u00b7 one cast",
+      "lesson": "Find the stronger pattern",
+      "name": "Goblin",
+      "place": "MOSSWOOD",
+      "portrait": "goblin",
+      "reward": "ward"
+    },
+    {
+      "casts": 1,
+      "deck": {
+        "B": 4,
+        "E": 16
+      },
+      "flavor": "Heavy hands. Stubborn roots. Pick your moment.",
+      "hp": 42,
+      "intent": "Heavy hits \u00b7 can regenerate once",
+      "lesson": "Know when to recover",
+      "name": "Troll",
+      "place": "THE OLD CROSSING",
+      "portrait": "troll",
+      "reward": "study"
+    },
+    {
+      "casts": 2,
+      "deck": {
+        "B": 8,
+        "D": 12
+      },
+      "flavor": "An old scholar with a dangerous second thought.",
+      "hp": 52,
+      "intent": "Draws and combines \u00b7 two casts",
+      "lesson": "Make your two casts count",
+      "name": "Necromancer",
+      "place": "QUIET GRAVES",
+      "portrait": "necromancer",
+      "reward": "dawn"
+    },
+    {
+      "casts": 2,
+      "deck": {
+        "A": 4,
+        "E": 6,
+        "F": 10
+      },
+      "flavor": "Every pattern you have learned leads here.",
+      "hp": 66,
+      "intent": "Three elements \u00b7 two casts",
+      "lesson": "Bring the whole spellbook",
+      "name": "Dragon",
+      "place": "THE EMBER DEN",
+      "portrait": "dragon",
+      "reward": ""
+    }
+  ],
+  "options": {
+    "classes": "night",
+    "hp": "",
+    "n": "1000",
+    "out": "analysis/night-planner",
+    "policies": "planner",
+    "primary": "",
+    "rewards": "skip,random",
+    "seed": "10000"
+  },
+  "policy_version": "hidden-order-invariant-v2",
+  "summaries": {
+    "night|planner|random|0": {
+      "casts": 3257,
+      "drawn": 28,
+      "healed": 2498,
+      "hp": 21042,
+      "n": 1000,
+      "spent": 2336,
+      "turns": 2000,
+      "wins": 1000
+    },
+    "night|planner|random|1": {
+      "casts": 3999,
+      "drawn": 108,
+      "healed": 5838,
+      "hp": 15384,
+      "n": 1000,
+      "spent": 5757,
+      "turns": 2002,
+      "wins": 1000
+    },
+    "night|planner|random|2": {
+      "casts": 6228,
+      "drawn": 24,
+      "healed": 13406,
+      "hp": 15817,
+      "n": 1000,
+      "spent": 8806,
+      "turns": 3238,
+      "wins": 965
+    },
+    "night|planner|random|3": {
+      "casts": 7827,
+      "drawn": 44,
+      "healed": 22213,
+      "hp": 16207,
+      "n": 1000,
+      "spent": 7874,
+      "turns": 3948,
+      "wins": 952
+    },
+    "night|planner|random|4": {
+      "casts": 8327,
+      "drawn": 4428,
+      "healed": 30370,
+      "hp": 13762,
+      "n": 1000,
+      "spent": 9256,
+      "turns": 4338,
+      "wins": 908
+    },
+    "night|planner|random|campaign": {
+      "n": 1000,
+      "wins": 834
+    },
+    "night|planner|skip|0": {
+      "casts": 3257,
+      "drawn": 28,
+      "healed": 2498,
+      "hp": 21042,
+      "n": 1000,
+      "spent": 2336,
+      "turns": 2000,
+      "wins": 1000
+    },
+    "night|planner|skip|1": {
+      "casts": 3997,
+      "drawn": 156,
+      "healed": 5735,
+      "hp": 15180,
+      "n": 1000,
+      "spent": 5844,
+      "turns": 2002,
+      "wins": 1000
+    },
+    "night|planner|skip|2": {
+      "casts": 6131,
+      "drawn": 0,
+      "healed": 12323,
+      "hp": 13753,
+      "n": 1000,
+      "spent": 9916,
+      "turns": 3197,
+      "wins": 939
+    },
+    "night|planner|skip|3": {
+      "casts": 7825,
+      "drawn": 0,
+      "healed": 20751,
+      "hp": 13569,
+      "n": 1000,
+      "spent": 9394,
+      "turns": 3920,
+      "wins": 937
+    },
+    "night|planner|skip|4": {
+      "casts": 8397,
+      "drawn": 5750,
+      "healed": 32115,
+      "hp": 14384,
+      "n": 1000,
+      "spent": 9794,
+      "turns": 4384,
+      "wins": 929
+    },
+    "night|planner|skip|campaign": {
+      "n": 1000,
+      "wins": 816
+    }
+  },
+  "usage": {
+    "night|planner|random|bolt": {
+      "casts": 3526,
+      "name": "Heartseeker"
+    },
+    "night|planner|random|dawn": {
+      "casts": 1600,
+      "name": "Eclipse"
+    },
+    "night|planner|random|gem_E": {
+      "casts": 73,
+      "name": "Root"
+    },
+    "night|planner|random|mend": {
+      "casts": 5353,
+      "name": "Blood Offering"
+    },
+    "night|planner|random|pulse": {
+      "casts": 327,
+      "name": "Pulse"
+    },
+    "night|planner|random|scry": {
+      "casts": 154,
+      "name": "Forbidden Pact"
+    },
+    "night|planner|random|shard": {
+      "casts": 1253,
+      "name": "Night Fang"
+    },
+    "night|planner|random|study": {
+      "casts": 536,
+      "name": "Grave Bargain"
+    },
+    "night|planner|random|twin": {
+      "casts": 2708,
+      "name": "Siphon"
+    },
+    "night|planner|random|ward": {
+      "casts": 5219,
+      "name": "Soul Feast"
+    },
+    "night|planner|random|weave_BE0": {
+      "casts": 173,
+      "name": "Briar Blood"
+    },
+    "night|planner|random|weave_BE1": {
+      "casts": 202,
+      "name": "Heartwood"
+    },
+    "night|planner|random|weave_BE2": {
+      "casts": 12,
+      "name": "Thorn Pact"
+    },
+    "night|planner|random|weave_DB0": {
+      "casts": 4587,
+      "name": "Blood Hex"
+    },
+    "night|planner|random|weave_DB1": {
+      "casts": 1929,
+      "name": "Grave Thirst"
+    },
+    "night|planner|random|weave_DB2": {
+      "casts": 177,
+      "name": "Scarlet Pact"
+    },
+    "night|planner|random|weave_DBE": {
+      "casts": 1556,
+      "name": "Gravebloom"
+    },
+    "night|planner|random|weave_DE0": {
+      "casts": 210,
+      "name": "Grave Root"
+    },
+    "night|planner|random|weave_DE1": {
+      "casts": 23,
+      "name": "Buried Memory"
+    },
+    "night|planner|random|weave_DE2": {
+      "casts": 20,
+      "name": "Obsidian Fang"
+    },
+    "night|planner|skip|bolt": {
+      "casts": 3821,
+      "name": "Heartseeker"
+    },
+    "night|planner|skip|dawn": {
+      "casts": 1995,
+      "name": "Eclipse"
+    },
+    "night|planner|skip|mend": {
+      "casts": 5848,
+      "name": "Blood Offering"
+    },
+    "night|planner|skip|pulse": {
+      "casts": 322,
+      "name": "Pulse"
+    },
+    "night|planner|skip|scry": {
+      "casts": 195,
+      "name": "Forbidden Pact"
+    },
+    "night|planner|skip|shard": {
+      "casts": 1340,
+      "name": "Night Fang"
+    },
+    "night|planner|skip|study": {
+      "casts": 647,
+      "name": "Grave Bargain"
+    },
+    "night|planner|skip|twin": {
+      "casts": 2596,
+      "name": "Siphon"
+    },
+    "night|planner|skip|ward": {
+      "casts": 5896,
+      "name": "Soul Feast"
+    },
+    "night|planner|skip|weave_DB0": {
+      "casts": 4389,
+      "name": "Blood Hex"
+    },
+    "night|planner|skip|weave_DB1": {
+      "casts": 2240,
+      "name": "Grave Thirst"
+    },
+    "night|planner|skip|weave_DB2": {
+      "casts": 318,
+      "name": "Scarlet Pact"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+# Godot generated data and exports
+.godot/
+*.app/
+*.pck
+*.zip
+export_credentials.cfg
+
+# Local test output, logs and Python caches
+work/
+source/test-output/
+source/test-progress*.cfg
+*.log
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+
+# Static browser exports (published through Pages artifacts)
+build/

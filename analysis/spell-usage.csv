@@ -1,0 +1,427 @@
+class,policy,reward,spell_id,spell_name,casts
+night,greedy,random,bolt,Heartseeker,2115
+night,greedy,random,dawn,Eclipse,647
+night,greedy,random,gem_E,Root,29
+night,greedy,random,mend,Blood Offering,2516
+night,greedy,random,pulse,Pulse,205
+night,greedy,random,shard,Night Fang,196
+night,greedy,random,twin,Siphon,1371
+night,greedy,random,ward,Soul Feast,2685
+night,greedy,random,weave_BE0,Briar Blood,43
+night,greedy,random,weave_BE1,Heartwood,74
+night,greedy,random,weave_BE2,Thorn Pact,2
+night,greedy,random,weave_DB0,Blood Hex,2220
+night,greedy,random,weave_DB1,Grave Thirst,964
+night,greedy,random,weave_DBE,Gravebloom,887
+night,greedy,random,weave_DE0,Grave Root,23
+night,greedy,random,weave_DE2,Obsidian Fang,5
+night,greedy,skip,bolt,Heartseeker,2305
+night,greedy,skip,dawn,Eclipse,640
+night,greedy,skip,mend,Blood Offering,2587
+night,greedy,skip,pulse,Pulse,290
+night,greedy,skip,shard,Night Fang,262
+night,greedy,skip,twin,Siphon,1458
+night,greedy,skip,ward,Soul Feast,3453
+night,greedy,skip,weave_DB0,Blood Hex,2268
+night,greedy,skip,weave_DB1,Grave Thirst,941
+night,planner,random,bolt,Heartseeker,3526
+night,planner,random,dawn,Eclipse,1600
+night,planner,random,gem_E,Root,73
+night,planner,random,mend,Blood Offering,5353
+night,planner,random,pulse,Pulse,327
+night,planner,random,scry,Forbidden Pact,154
+night,planner,random,shard,Night Fang,1253
+night,planner,random,study,Grave Bargain,536
+night,planner,random,twin,Siphon,2708
+night,planner,random,ward,Soul Feast,5219
+night,planner,random,weave_BE0,Briar Blood,173
+night,planner,random,weave_BE1,Heartwood,202
+night,planner,random,weave_BE2,Thorn Pact,12
+night,planner,random,weave_DB0,Blood Hex,4587
+night,planner,random,weave_DB1,Grave Thirst,1929
+night,planner,random,weave_DB2,Scarlet Pact,177
+night,planner,random,weave_DBE,Gravebloom,1556
+night,planner,random,weave_DE0,Grave Root,210
+night,planner,random,weave_DE1,Buried Memory,23
+night,planner,random,weave_DE2,Obsidian Fang,20
+night,planner,skip,bolt,Heartseeker,3821
+night,planner,skip,dawn,Eclipse,1995
+night,planner,skip,mend,Blood Offering,5848
+night,planner,skip,pulse,Pulse,322
+night,planner,skip,scry,Forbidden Pact,195
+night,planner,skip,shard,Night Fang,1340
+night,planner,skip,study,Grave Bargain,647
+night,planner,skip,twin,Siphon,2596
+night,planner,skip,ward,Soul Feast,5896
+night,planner,skip,weave_DB0,Blood Hex,4389
+night,planner,skip,weave_DB1,Grave Thirst,2240
+night,planner,skip,weave_DB2,Scarlet Pact,318
+night,random,random,bolt,Heartseeker,917
+night,random,random,dawn,Eclipse,94
+night,random,random,gem_E,Root,187
+night,random,random,mend,Blood Offering,2436
+night,random,random,pulse,Pulse,926
+night,random,random,scry,Forbidden Pact,749
+night,random,random,shard,Night Fang,1705
+night,random,random,study,Grave Bargain,209
+night,random,random,twin,Siphon,1607
+night,random,random,ward,Soul Feast,856
+night,random,random,weave_BE0,Briar Blood,218
+night,random,random,weave_BE1,Heartwood,112
+night,random,random,weave_BE2,Thorn Pact,9
+night,random,random,weave_DB0,Blood Hex,1760
+night,random,random,weave_DB1,Grave Thirst,1297
+night,random,random,weave_DB2,Scarlet Pact,745
+night,random,random,weave_DBE,Gravebloom,134
+night,random,random,weave_DE0,Grave Root,138
+night,random,random,weave_DE1,Buried Memory,55
+night,random,random,weave_DE2,Obsidian Fang,7
+night,random,skip,bolt,Heartseeker,1035
+night,random,skip,dawn,Eclipse,102
+night,random,skip,mend,Blood Offering,2550
+night,random,skip,pulse,Pulse,929
+night,random,skip,scry,Forbidden Pact,761
+night,random,skip,shard,Night Fang,1804
+night,random,skip,study,Grave Bargain,223
+night,random,skip,twin,Siphon,1616
+night,random,skip,ward,Soul Feast,991
+night,random,skip,weave_DB0,Blood Hex,1753
+night,random,skip,weave_DB1,Grave Thirst,1334
+night,random,skip,weave_DB2,Scarlet Pact,774
+pyro,greedy,random,bolt,Flame Lance,413
+pyro,greedy,random,dawn,Wildfire,1059
+pyro,greedy,random,gem_B,Blood Bloom,105
+pyro,greedy,random,gem_D,Hex,183
+pyro,greedy,random,gem_E,Root,35
+pyro,greedy,random,mend,Cooling Breath,254
+pyro,greedy,random,pulse,Pulse,106
+pyro,greedy,random,shard,Firebrand,336
+pyro,greedy,random,twin,Kindle,3014
+pyro,greedy,random,ward,Backdraft,383
+pyro,greedy,random,weave_BA1,Razorwind,5
+pyro,greedy,random,weave_BA2,Second Heart,101
+pyro,greedy,random,weave_BE0,Briar Blood,25
+pyro,greedy,random,weave_BE2,Thorn Pact,1
+pyro,greedy,random,weave_BEA,Wildheart,35
+pyro,greedy,random,weave_BEF,Molten Heart,91
+pyro,greedy,random,weave_BF0,Bloodfire,162
+pyro,greedy,random,weave_BF1,Crimson Ember,12
+pyro,greedy,random,weave_BF2,Phoenix Blood,44
+pyro,greedy,random,weave_BFA,Crimson Tempest,401
+pyro,greedy,random,weave_DA1,Hollow Gale,6
+pyro,greedy,random,weave_DB0,Blood Hex,1
+pyro,greedy,random,weave_DBE,Gravebloom,4
+pyro,greedy,random,weave_DBF,Hellheart,143
+pyro,greedy,random,weave_DE0,Grave Root,16
+pyro,greedy,random,weave_DEF,Ashen Tomb,35
+pyro,greedy,random,weave_DF0,Witchfire,110
+pyro,greedy,random,weave_DF2,Hellbrand,191
+pyro,greedy,random,weave_DFA,Witchstorm,610
+pyro,greedy,random,weave_EA0,Dust Devil,37
+pyro,greedy,random,weave_EA2,Mountain Breath,22
+pyro,greedy,random,weave_EF0,Magma Shard,57
+pyro,greedy,random,weave_EF2,Volcanic Spear,150
+pyro,greedy,random,weave_EFA,Volcanic Storm,413
+pyro,greedy,random,weave_FA0,Firewhirl,1339
+pyro,greedy,random,weave_FA1,Furnace Gale,2305
+pyro,greedy,skip,bolt,Flame Lance,514
+pyro,greedy,skip,dawn,Wildfire,1540
+pyro,greedy,skip,mend,Cooling Breath,467
+pyro,greedy,skip,pulse,Pulse,134
+pyro,greedy,skip,shard,Firebrand,233
+pyro,greedy,skip,twin,Kindle,3262
+pyro,greedy,skip,ward,Backdraft,729
+pyro,greedy,skip,weave_FA0,Firewhirl,1618
+pyro,greedy,skip,weave_FA1,Furnace Gale,3858
+pyro,planner,random,bolt,Flame Lance,565
+pyro,planner,random,dawn,Wildfire,649
+pyro,planner,random,gem_B,Blood Bloom,166
+pyro,planner,random,gem_D,Hex,246
+pyro,planner,random,gem_E,Root,69
+pyro,planner,random,mend,Cooling Breath,518
+pyro,planner,random,pulse,Pulse,32
+pyro,planner,random,scry,Bellows,1117
+pyro,planner,random,shard,Firebrand,1239
+pyro,planner,random,study,Stoke,132
+pyro,planner,random,twin,Kindle,6206
+pyro,planner,random,ward,Backdraft,989
+pyro,planner,random,weave_BA0,Quickblood,4
+pyro,planner,random,weave_BA1,Razorwind,16
+pyro,planner,random,weave_BA2,Second Heart,91
+pyro,planner,random,weave_BE0,Briar Blood,12
+pyro,planner,random,weave_BEA,Wildheart,26
+pyro,planner,random,weave_BEF,Molten Heart,61
+pyro,planner,random,weave_BF0,Bloodfire,1031
+pyro,planner,random,weave_BF1,Crimson Ember,6
+pyro,planner,random,weave_BF2,Phoenix Blood,149
+pyro,planner,random,weave_BFA,Crimson Tempest,583
+pyro,planner,random,weave_DA0,Nightwind,4
+pyro,planner,random,weave_DA1,Hollow Gale,26
+pyro,planner,random,weave_DA2,Ravenflight,10
+pyro,planner,random,weave_DB0,Blood Hex,10
+pyro,planner,random,weave_DBA,Raven Covenant,4
+pyro,planner,random,weave_DBF,Hellheart,101
+pyro,planner,random,weave_DE0,Grave Root,2
+pyro,planner,random,weave_DEA,Dust of Ages,1
+pyro,planner,random,weave_DEF,Ashen Tomb,49
+pyro,planner,random,weave_DF0,Witchfire,811
+pyro,planner,random,weave_DF1,Ashen Secrets,2
+pyro,planner,random,weave_DF2,Hellbrand,590
+pyro,planner,random,weave_DFA,Witchstorm,808
+pyro,planner,random,weave_EA0,Dust Devil,151
+pyro,planner,random,weave_EA2,Mountain Breath,41
+pyro,planner,random,weave_EF0,Magma Shard,130
+pyro,planner,random,weave_EF1,Obsidian Skin,4
+pyro,planner,random,weave_EF2,Volcanic Spear,739
+pyro,planner,random,weave_EFA,Volcanic Storm,569
+pyro,planner,random,weave_FA0,Firewhirl,3908
+pyro,planner,random,weave_FA1,Furnace Gale,4959
+pyro,planner,random,weave_FA2,Cinderflight,93
+pyro,planner,skip,bolt,Flame Lance,728
+pyro,planner,skip,dawn,Wildfire,1342
+pyro,planner,skip,mend,Cooling Breath,726
+pyro,planner,skip,pulse,Pulse,20
+pyro,planner,skip,scry,Bellows,1154
+pyro,planner,skip,shard,Firebrand,1464
+pyro,planner,skip,study,Stoke,171
+pyro,planner,skip,twin,Kindle,8356
+pyro,planner,skip,ward,Backdraft,1564
+pyro,planner,skip,weave_FA0,Firewhirl,4703
+pyro,planner,skip,weave_FA1,Furnace Gale,7275
+pyro,planner,skip,weave_FA2,Cinderflight,64
+pyro,random,random,bolt,Flame Lance,1035
+pyro,random,random,dawn,Wildfire,152
+pyro,random,random,gem_B,Blood Bloom,264
+pyro,random,random,gem_D,Hex,416
+pyro,random,random,gem_E,Root,159
+pyro,random,random,mend,Cooling Breath,664
+pyro,random,random,pulse,Pulse,1030
+pyro,random,random,scry,Bellows,786
+pyro,random,random,shard,Firebrand,1534
+pyro,random,random,study,Stoke,162
+pyro,random,random,twin,Kindle,3097
+pyro,random,random,ward,Backdraft,793
+pyro,random,random,weave_BA0,Quickblood,109
+pyro,random,random,weave_BA1,Razorwind,25
+pyro,random,random,weave_BA2,Second Heart,107
+pyro,random,random,weave_BE0,Briar Blood,31
+pyro,random,random,weave_BE1,Heartwood,1
+pyro,random,random,weave_BEA,Wildheart,20
+pyro,random,random,weave_BEF,Molten Heart,32
+pyro,random,random,weave_BF0,Bloodfire,353
+pyro,random,random,weave_BF1,Crimson Ember,20
+pyro,random,random,weave_BF2,Phoenix Blood,196
+pyro,random,random,weave_BFA,Crimson Tempest,161
+pyro,random,random,weave_DA0,Nightwind,118
+pyro,random,random,weave_DA1,Hollow Gale,21
+pyro,random,random,weave_DA2,Ravenflight,71
+pyro,random,random,weave_DB0,Blood Hex,35
+pyro,random,random,weave_DB1,Grave Thirst,2
+pyro,random,random,weave_DBA,Raven Covenant,12
+pyro,random,random,weave_DBE,Gravebloom,1
+pyro,random,random,weave_DBF,Hellheart,47
+pyro,random,random,weave_DE0,Grave Root,25
+pyro,random,random,weave_DE1,Buried Memory,1
+pyro,random,random,weave_DE2,Obsidian Fang,4
+pyro,random,random,weave_DEA,Dust of Ages,12
+pyro,random,random,weave_DEF,Ashen Tomb,26
+pyro,random,random,weave_DF0,Witchfire,335
+pyro,random,random,weave_DF1,Ashen Secrets,12
+pyro,random,random,weave_DF2,Hellbrand,288
+pyro,random,random,weave_DFA,Witchstorm,202
+pyro,random,random,weave_EA0,Dust Devil,149
+pyro,random,random,weave_EA1,Stone Echo,4
+pyro,random,random,weave_EA2,Mountain Breath,74
+pyro,random,random,weave_EF0,Magma Shard,245
+pyro,random,random,weave_EF1,Obsidian Skin,13
+pyro,random,random,weave_EF2,Volcanic Spear,209
+pyro,random,random,weave_EFA,Volcanic Storm,115
+pyro,random,random,weave_FA0,Firewhirl,1578
+pyro,random,random,weave_FA1,Furnace Gale,1359
+pyro,random,random,weave_FA2,Cinderflight,487
+pyro,random,skip,bolt,Flame Lance,1314
+pyro,random,skip,dawn,Wildfire,237
+pyro,random,skip,mend,Cooling Breath,924
+pyro,random,skip,pulse,Pulse,1220
+pyro,random,skip,scry,Bellows,977
+pyro,random,skip,shard,Firebrand,1938
+pyro,random,skip,study,Stoke,238
+pyro,random,skip,twin,Kindle,3948
+pyro,random,skip,ward,Backdraft,1110
+pyro,random,skip,weave_FA0,Firewhirl,1978
+pyro,random,skip,weave_FA1,Furnace Gale,1661
+pyro,random,skip,weave_FA2,Cinderflight,600
+tide,greedy,random,bolt,Tidal Bolt,3610
+tide,greedy,random,dawn,Dawnfall,893
+tide,greedy,random,gem_B,Blood Bloom,79
+tide,greedy,random,gem_D,Hex,85
+tide,greedy,random,gem_E,Root,48
+tide,greedy,random,mend,Mend,3087
+tide,greedy,random,pulse,Pulse,1306
+tide,greedy,random,shard,Sunshard,2592
+tide,greedy,random,twin,Twin Tide,751
+tide,greedy,random,ward,Tidal Ward,1650
+tide,greedy,random,weave_BE0,Briar Blood,36
+tide,greedy,random,weave_BE2,Thorn Pact,1
+tide,greedy,random,weave_DB0,Blood Hex,5
+tide,greedy,random,weave_DBE,Gravebloom,2
+tide,greedy,random,weave_DE0,Grave Root,11
+tide,greedy,random,weave_LB0,Martyr's Light,81
+tide,greedy,random,weave_LB1,Sanguine Dawn,737
+tide,greedy,random,weave_LB2,Vital Oath,22
+tide,greedy,random,weave_LBE,Tree of Life,61
+tide,greedy,random,weave_LD0,Eclipse Spark,470
+tide,greedy,random,weave_LD2,Duskfire,61
+tide,greedy,random,weave_LDB,Twilight Heart,55
+tide,greedy,random,weave_LE0,Sunroot,94
+tide,greedy,random,weave_LE1,Amber Lance,619
+tide,greedy,random,weave_LE2,Sanctuary,13
+tide,greedy,random,weave_WB0,Red Tide,169
+tide,greedy,random,weave_WB1,Bloodspring,32
+tide,greedy,random,weave_WB2,Crimson Current,37
+tide,greedy,random,weave_WBE,Living Marsh,12
+tide,greedy,random,weave_WD0,Blackwater,210
+tide,greedy,random,weave_WD2,Undertow,21
+tide,greedy,random,weave_WDB,Drowned Heart,128
+tide,greedy,random,weave_WDE,Sunken Crypt,17
+tide,greedy,random,weave_WE0,Living Spring,60
+tide,greedy,random,weave_WE1,Riverstone,43
+tide,greedy,random,weave_WL0,Dewlight,209
+tide,greedy,random,weave_WL1,Prism Current,782
+tide,greedy,random,weave_WLB,Mercy Tide,784
+tide,greedy,random,weave_WLD,Dusk Covenant,1269
+tide,greedy,random,weave_WLE,Sacred Grove,743
+tide,greedy,skip,bolt,Tidal Bolt,5544
+tide,greedy,skip,dawn,Dawnfall,1653
+tide,greedy,skip,mend,Mend,4945
+tide,greedy,skip,pulse,Pulse,1785
+tide,greedy,skip,shard,Sunshard,3213
+tide,greedy,skip,twin,Twin Tide,571
+tide,greedy,skip,ward,Tidal Ward,3221
+tide,greedy,skip,weave_WL0,Dewlight,186
+tide,greedy,skip,weave_WL1,Prism Current,782
+tide,planner,random,bolt,Tidal Bolt,7075
+tide,planner,random,dawn,Dawnfall,1501
+tide,planner,random,gem_B,Blood Bloom,70
+tide,planner,random,gem_D,Hex,74
+tide,planner,random,gem_E,Root,23
+tide,planner,random,mend,Mend,4508
+tide,planner,random,pulse,Pulse,163
+tide,planner,random,scry,Scry,2145
+tide,planner,random,shard,Sunshard,4437
+tide,planner,random,study,Deep Study,800
+tide,planner,random,twin,Twin Tide,2840
+tide,planner,random,ward,Tidal Ward,2123
+tide,planner,random,weave_BE0,Briar Blood,57
+tide,planner,random,weave_BE1,Heartwood,4
+tide,planner,random,weave_BE2,Thorn Pact,4
+tide,planner,random,weave_DB0,Blood Hex,1
+tide,planner,random,weave_DBE,Gravebloom,5
+tide,planner,random,weave_DE0,Grave Root,5
+tide,planner,random,weave_DE2,Obsidian Fang,9
+tide,planner,random,weave_LB0,Martyr's Light,206
+tide,planner,random,weave_LB1,Sanguine Dawn,2134
+tide,planner,random,weave_LB2,Vital Oath,47
+tide,planner,random,weave_LBE,Tree of Life,130
+tide,planner,random,weave_LD0,Eclipse Spark,1172
+tide,planner,random,weave_LD1,Twilight Pact,180
+tide,planner,random,weave_LD2,Duskfire,130
+tide,planner,random,weave_LDB,Twilight Heart,174
+tide,planner,random,weave_LDE,Forgotten Shrine,27
+tide,planner,random,weave_LE0,Sunroot,92
+tide,planner,random,weave_LE1,Amber Lance,1743
+tide,planner,random,weave_LE2,Sanctuary,20
+tide,planner,random,weave_WB0,Red Tide,514
+tide,planner,random,weave_WB1,Bloodspring,29
+tide,planner,random,weave_WB2,Crimson Current,71
+tide,planner,random,weave_WBE,Living Marsh,34
+tide,planner,random,weave_WD0,Blackwater,289
+tide,planner,random,weave_WD1,Drowned Memory,46
+tide,planner,random,weave_WD2,Undertow,44
+tide,planner,random,weave_WDB,Drowned Heart,248
+tide,planner,random,weave_WDE,Sunken Crypt,31
+tide,planner,random,weave_WE0,Living Spring,67
+tide,planner,random,weave_WE1,Riverstone,210
+tide,planner,random,weave_WE2,Rootwater,9
+tide,planner,random,weave_WL0,Dewlight,1178
+tide,planner,random,weave_WL1,Prism Current,1027
+tide,planner,random,weave_WL2,Mirrorwell,1074
+tide,planner,random,weave_WLB,Mercy Tide,548
+tide,planner,random,weave_WLD,Dusk Covenant,2094
+tide,planner,random,weave_WLE,Sacred Grove,834
+tide,planner,skip,bolt,Tidal Bolt,11925
+tide,planner,skip,dawn,Dawnfall,3146
+tide,planner,skip,mend,Mend,7554
+tide,planner,skip,pulse,Pulse,309
+tide,planner,skip,scry,Scry,2662
+tide,planner,skip,shard,Sunshard,6321
+tide,planner,skip,study,Deep Study,1026
+tide,planner,skip,twin,Twin Tide,2375
+tide,planner,skip,ward,Tidal Ward,2335
+tide,planner,skip,weave_WL0,Dewlight,1731
+tide,planner,skip,weave_WL1,Prism Current,1027
+tide,planner,skip,weave_WL2,Mirrorwell,1885
+tide,random,random,bolt,Tidal Bolt,1657
+tide,random,random,dawn,Dawnfall,137
+tide,random,random,gem_B,Blood Bloom,335
+tide,random,random,gem_D,Hex,472
+tide,random,random,gem_E,Root,278
+tide,random,random,mend,Mend,2251
+tide,random,random,pulse,Pulse,1345
+tide,random,random,scry,Scry,1174
+tide,random,random,shard,Sunshard,3222
+tide,random,random,study,Deep Study,360
+tide,random,random,twin,Twin Tide,2281
+tide,random,random,ward,Tidal Ward,942
+tide,random,random,weave_BE0,Briar Blood,77
+tide,random,random,weave_BE1,Heartwood,5
+tide,random,random,weave_BE2,Thorn Pact,10
+tide,random,random,weave_DB0,Blood Hex,63
+tide,random,random,weave_DB1,Grave Thirst,8
+tide,random,random,weave_DB2,Scarlet Pact,2
+tide,random,random,weave_DBE,Gravebloom,3
+tide,random,random,weave_DE0,Grave Root,58
+tide,random,random,weave_DE1,Buried Memory,4
+tide,random,random,weave_DE2,Obsidian Fang,9
+tide,random,random,weave_LB0,Martyr's Light,358
+tide,random,random,weave_LB1,Sanguine Dawn,417
+tide,random,random,weave_LB2,Vital Oath,28
+tide,random,random,weave_LBE,Tree of Life,62
+tide,random,random,weave_LD0,Eclipse Spark,518
+tide,random,random,weave_LD1,Twilight Pact,210
+tide,random,random,weave_LD2,Duskfire,44
+tide,random,random,weave_LDB,Twilight Heart,55
+tide,random,random,weave_LDE,Forgotten Shrine,34
+tide,random,random,weave_LE0,Sunroot,272
+tide,random,random,weave_LE1,Amber Lance,356
+tide,random,random,weave_LE2,Sanctuary,28
+tide,random,random,weave_WB0,Red Tide,388
+tide,random,random,weave_WB1,Bloodspring,266
+tide,random,random,weave_WB2,Crimson Current,40
+tide,random,random,weave_WBE,Living Marsh,46
+tide,random,random,weave_WD0,Blackwater,448
+tide,random,random,weave_WD1,Drowned Memory,175
+tide,random,random,weave_WD2,Undertow,41
+tide,random,random,weave_WDB,Drowned Heart,61
+tide,random,random,weave_WDE,Sunken Crypt,54
+tide,random,random,weave_WE0,Living Spring,264
+tide,random,random,weave_WE1,Riverstone,243
+tide,random,random,weave_WE2,Rootwater,14
+tide,random,random,weave_WL0,Dewlight,1842
+tide,random,random,weave_WL1,Prism Current,2003
+tide,random,random,weave_WL2,Mirrorwell,1257
+tide,random,random,weave_WLB,Mercy Tide,264
+tide,random,random,weave_WLD,Dusk Covenant,435
+tide,random,random,weave_WLE,Sacred Grove,228
+tide,random,skip,bolt,Tidal Bolt,2386
+tide,random,skip,dawn,Dawnfall,275
+tide,random,skip,mend,Mend,3200
+tide,random,skip,pulse,Pulse,1670
+tide,random,skip,scry,Scry,1605
+tide,random,skip,shard,Sunshard,4124
+tide,random,skip,study,Deep Study,520
+tide,random,skip,twin,Twin Tide,2921
+tide,random,skip,ward,Tidal Ward,1481
+tide,random,skip,weave_WL0,Dewlight,2537
+tide,random,skip,weave_WL1,Prism Current,2771
+tide,random,skip,weave_WL2,Mirrorwell,1552

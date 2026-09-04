@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f1e2">
+  <meta name="description" content="Choose your class, weave elemental spells, and follow a five-fight journey to the dragon.">
+  <title>The Hex Game</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #f7f1e2; }
+    #canvas { display: block; width: 100%; height: 100%; outline: none; touch-action: none; }
+    #loading { position: fixed; inset: 0; display: grid; place-content: center; gap: 18px; padding: 24px; color: #244348; background: #f7f1e2; text-align: center; }
+    h1 { margin: 0; font: 400 clamp(32px, 6vw, 56px)/1.1 Georgia, serif; }
+    .stars { color: #b98f42; font-size: 28px; letter-spacing: 16px; padding-left: 16px; }
+    #message { margin: 0; max-width: 480px; font: 15px/1.6 system-ui, sans-serif; }
+    progress { width: min(320px, 80vw); height: 8px; margin: 0 auto; accent-color: #277881; }
+    button { justify-self: center; border: 0; border-radius: 8px; padding: 12px 24px; background: #277881; color: white; font: 16px system-ui, sans-serif; cursor: pointer; }
+    button:focus-visible { outline: 3px solid #b98f42; outline-offset: 4px; }
+    [hidden] { display: none !important; }
+    noscript { position: fixed; inset: 0; display: grid; place-content: center; padding: 24px; background: #f7f1e2; font: 18px Georgia, serif; }
+  </style>
+  $GODOT_HEAD_INCLUDE
+</head>
+<body>
+  <canvas id="canvas" tabindex="0" aria-label="The Hex Game. Click a spell or press 1 through 9 to arrange it, Enter to cast, E to end your turn, Escape for settings.">Your browser needs canvas support to play.</canvas>
+  <section id="loading" aria-live="polite" aria-busy="true">
+    <div class="stars" aria-hidden="true">✦ ✦ ✦</div>
+    <h1>The Hex Game</h1>
+    <p id="message">Preparing your spellbook…</p>
+    <progress id="progress" aria-label="Loading game"></progress>
+    <button id="retry" hidden>Try again</button>
+  </section>
+  <noscript>Enable JavaScript to play The Hex Game.</noscript>
+  <script src="$GODOT_URL"></script>
+  <script>
+    const config = $GODOT_CONFIG;
+    const loading = document.getElementById('loading');
+    const progress = document.getElementById('progress');
+    const message = document.getElementById('message');
+    const retry = document.getElementById('retry');
+    retry.addEventListener('click', () => location.reload());
+    function failed(error) {
+      console.error(error);
+      loading.hidden = false;
+      loading.setAttribute('aria-busy', 'false');
+      message.textContent = 'The game could not load. Check your connection, then try again in a browser with WebGL 2 support.';
+      progress.hidden = true;
+      retry.hidden = false;
+    }
+    try {
+      const missing = Engine.getMissingFeatures({ threads: $GODOT_THREADS_ENABLED });
+      if (missing.length) throw new Error(missing.join(', '));
+      const engine = new Engine(config);
+      engine.startGame({
+        onProgress(current, total) {
+          if (total > 0) { progress.max = total; progress.value = current; }
+          else { progress.removeAttribute('value'); }
+        },
+      }).then(() => {
+        loading.hidden = true;
+        document.getElementById('canvas').focus();
+      }).catch(failed);
+    } catch (error) { failed(error); }
+  </script>
+</body>
+</html>

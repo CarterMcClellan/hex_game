@@ -1,0 +1,827 @@
+{
+  "cases": 10000,
+  "class_definitions": [
+    {
+      "deck": {
+        "L": 11,
+        "W": 9
+      },
+      "elements": [
+        "W",
+        "L"
+      ],
+      "hp": 30,
+      "id": "tide",
+      "lines": [
+        "Water builds Tide, up to 3.",
+        "Light spends Tide to boost its spell.",
+        "Each Tide: +2 power or +1 draw."
+      ],
+      "name": "Tidecaller",
+      "role": "Patient combination caster",
+      "trait": "Ebb & Flow"
+    },
+    {
+      "deck": {
+        "A": 6,
+        "F": 14
+      },
+      "elements": [
+        "F",
+        "A"
+      ],
+      "hp": 28,
+      "id": "pyro",
+      "lines": [
+        "Fire gains +1 Heat and hits harder.",
+        "At 4+ Heat, Fire costs 2 HP.",
+        "Air vents Heat into healing."
+      ],
+      "name": "Pyromancer",
+      "role": "A volatile damage engine",
+      "trait": "Heat"
+    },
+    {
+      "deck": {
+        "B": 12,
+        "D": 8
+      },
+      "elements": [
+        "D",
+        "B"
+      ],
+      "hp": 22,
+      "id": "night",
+      "lines": [
+        "Blood spends HP for stronger spells.",
+        "Dark attacks steal half their damage.",
+        "Soul Feast steals all of its damage."
+      ],
+      "name": "Nightbinder",
+      "role": "Life is a resource",
+      "trait": "Blood Price"
+    }
+  ],
+  "elapsed_seconds": 58.883,
+  "encounters": [
+    {
+      "casts": 1,
+      "deck": {
+        "B": 8,
+        "D": 12
+      },
+      "flavor": "A flutter in the dusk. Your first spell awaits.",
+      "hp": 18,
+      "intent": "Small attacks \u00b7 one cast",
+      "lesson": "A small beginning",
+      "name": "Bat",
+      "place": "THE HOLLOW",
+      "portrait": "bat",
+      "reward": "bolt"
+    },
+    {
+      "casts": 1,
+      "deck": {
+        "D": 8,
+        "E": 12
+      },
+      "flavor": "A crooked grin, and a pocket full of stones.",
+      "hp": 28,
+      "intent": "Stronger patterns \u00b7 one cast",
+      "lesson": "Find the stronger pattern",
+      "name": "Goblin",
+      "place": "MOSSWOOD",
+      "portrait": "goblin",
+      "reward": "ward"
+    },
+    {
+      "casts": 1,
+      "deck": {
+        "B": 4,
+        "E": 16
+      },
+      "flavor": "Heavy hands. Stubborn roots. Pick your moment.",
+      "hp": 42,
+      "intent": "Heavy hits \u00b7 can regenerate once",
+      "lesson": "Know when to recover",
+      "name": "Troll",
+      "place": "THE OLD CROSSING",
+      "portrait": "troll",
+      "reward": "study"
+    },
+    {
+      "casts": 2,
+      "deck": {
+        "B": 8,
+        "D": 12
+      },
+      "flavor": "An old scholar with a dangerous second thought.",
+      "hp": 52,
+      "intent": "Draws and combines \u00b7 two casts",
+      "lesson": "Make your two casts count",
+      "name": "Necromancer",
+      "place": "QUIET GRAVES",
+      "portrait": "necromancer",
+      "reward": "dawn"
+    },
+    {
+      "casts": 2,
+      "deck": {
+        "A": 4,
+        "E": 6,
+        "F": 10
+      },
+      "flavor": "Every pattern you have learned leads here.",
+      "hp": 66,
+      "intent": "Three elements \u00b7 two casts",
+      "lesson": "Bring the whole spellbook",
+      "name": "Dragon",
+      "place": "THE EMBER DEN",
+      "portrait": "dragon",
+      "reward": ""
+    }
+  ],
+  "options": {
+    "classes": "tide",
+    "hp": "",
+    "n": "500",
+    "out": "analysis/tide-sensitivity",
+    "policies": "greedy,random",
+    "primary": "",
+    "rewards": "skip,random",
+    "seed": "10000"
+  },
+  "policy_version": "hidden-order-invariant-v2",
+  "summaries": {
+    "tide|greedy|random|0": {
+      "casts": 1669,
+      "drawn": 0,
+      "healed": 452,
+      "hp": 13848,
+      "n": 500,
+      "spent": 0,
+      "turns": 1170,
+      "wins": 500
+    },
+    "tide|greedy|random|1": {
+      "casts": 2156,
+      "drawn": 0,
+      "healed": 1313,
+      "hp": 10128,
+      "n": 500,
+      "spent": 0,
+      "turns": 1405,
+      "wins": 500
+    },
+    "tide|greedy|random|2": {
+      "casts": 3612,
+      "drawn": 0,
+      "healed": 3170,
+      "hp": 8800,
+      "n": 500,
+      "spent": 0,
+      "turns": 2173,
+      "wins": 500
+    },
+    "tide|greedy|random|3": {
+      "casts": 5728,
+      "drawn": 0,
+      "healed": 14861,
+      "hp": 7013,
+      "n": 500,
+      "spent": 0,
+      "turns": 3256,
+      "wins": 500
+    },
+    "tide|greedy|random|4": {
+      "casts": 7720,
+      "drawn": 0,
+      "healed": 29663,
+      "hp": 4352,
+      "n": 500,
+      "spent": 0,
+      "turns": 4445,
+      "wins": 438
+    },
+    "tide|greedy|random|campaign": {
+      "n": 500,
+      "wins": 438
+    },
+    "tide|greedy|skip|0": {
+      "casts": 1669,
+      "drawn": 0,
+      "healed": 452,
+      "hp": 13848,
+      "n": 500,
+      "spent": 0,
+      "turns": 1170,
+      "wins": 500
+    },
+    "tide|greedy|skip|1": {
+      "casts": 2264,
+      "drawn": 0,
+      "healed": 1566,
+      "hp": 9669,
+      "n": 500,
+      "spent": 0,
+      "turns": 1510,
+      "wins": 500
+    },
+    "tide|greedy|skip|2": {
+      "casts": 4170,
+      "drawn": 0,
+      "healed": 5817,
+      "hp": 8326,
+      "n": 500,
+      "spent": 0,
+      "turns": 2563,
+      "wins": 500
+    },
+    "tide|greedy|skip|3": {
+      "casts": 7722,
+      "drawn": 0,
+      "healed": 24663,
+      "hp": 6863,
+      "n": 500,
+      "spent": 0,
+      "turns": 4323,
+      "wins": 500
+    },
+    "tide|greedy|skip|4": {
+      "casts": 6075,
+      "drawn": 0,
+      "healed": 21552,
+      "hp": 2317,
+      "n": 500,
+      "spent": 0,
+      "turns": 3819,
+      "wins": 348
+    },
+    "tide|greedy|skip|campaign": {
+      "n": 500,
+      "wins": 348
+    },
+    "tide|random|random|0": {
+      "casts": 2962,
+      "drawn": 1932,
+      "healed": 1925,
+      "hp": 13593,
+      "n": 500,
+      "spent": 0,
+      "turns": 1766,
+      "wins": 500
+    },
+    "tide|random|random|1": {
+      "casts": 3821,
+      "drawn": 1942,
+      "healed": 4885,
+      "hp": 8033,
+      "n": 500,
+      "spent": 0,
+      "turns": 2208,
+      "wins": 492
+    },
+    "tide|random|random|2": {
+      "casts": 6457,
+      "drawn": 2976,
+      "healed": 12135,
+      "hp": 6431,
+      "n": 500,
+      "spent": 0,
+      "turns": 3546,
+      "wins": 459
+    },
+    "tide|random|random|3": {
+      "casts": 6956,
+      "drawn": 3597,
+      "healed": 15741,
+      "hp": 1646,
+      "n": 500,
+      "spent": 0,
+      "turns": 3700,
+      "wins": 183
+    },
+    "tide|random|random|4": {
+      "casts": 4948,
+      "drawn": 2528,
+      "healed": 9982,
+      "hp": 44,
+      "n": 500,
+      "spent": 0,
+      "turns": 2626,
+      "wins": 12
+    },
+    "tide|random|random|campaign": {
+      "n": 500,
+      "wins": 3
+    },
+    "tide|random|skip|0": {
+      "casts": 2962,
+      "drawn": 1932,
+      "healed": 1925,
+      "hp": 13593,
+      "n": 500,
+      "spent": 0,
+      "turns": 1766,
+      "wins": 500
+    },
+    "tide|random|skip|1": {
+      "casts": 3993,
+      "drawn": 2174,
+      "healed": 5188,
+      "hp": 7675,
+      "n": 500,
+      "spent": 0,
+      "turns": 2306,
+      "wins": 490
+    },
+    "tide|random|skip|2": {
+      "casts": 6904,
+      "drawn": 3192,
+      "healed": 13839,
+      "hp": 5644,
+      "n": 500,
+      "spent": 0,
+      "turns": 3820,
+      "wins": 419
+    },
+    "tide|random|skip|3": {
+      "casts": 6490,
+      "drawn": 4039,
+      "healed": 13434,
+      "hp": 626,
+      "n": 500,
+      "spent": 0,
+      "turns": 3499,
+      "wins": 86
+    },
+    "tide|random|skip|4": {
+      "casts": 4693,
+      "drawn": 2985,
+      "healed": 9013,
+      "hp": 54,
+      "n": 500,
+      "spent": 0,
+      "turns": 2542,
+      "wins": 12
+    },
+    "tide|random|skip|campaign": {
+      "n": 500,
+      "wins": 0
+    }
+  },
+  "usage": {
+    "tide|greedy|random|bolt": {
+      "casts": 3610,
+      "name": "Tidal Bolt"
+    },
+    "tide|greedy|random|dawn": {
+      "casts": 893,
+      "name": "Dawnfall"
+    },
+    "tide|greedy|random|gem_B": {
+      "casts": 79,
+      "name": "Blood Bloom"
+    },
+    "tide|greedy|random|gem_D": {
+      "casts": 85,
+      "name": "Hex"
+    },
+    "tide|greedy|random|gem_E": {
+      "casts": 48,
+      "name": "Root"
+    },
+    "tide|greedy|random|mend": {
+      "casts": 3087,
+      "name": "Mend"
+    },
+    "tide|greedy|random|pulse": {
+      "casts": 1306,
+      "name": "Pulse"
+    },
+    "tide|greedy|random|shard": {
+      "casts": 2592,
+      "name": "Sunshard"
+    },
+    "tide|greedy|random|twin": {
+      "casts": 751,
+      "name": "Twin Tide"
+    },
+    "tide|greedy|random|ward": {
+      "casts": 1650,
+      "name": "Tidal Ward"
+    },
+    "tide|greedy|random|weave_BE0": {
+      "casts": 36,
+      "name": "Briar Blood"
+    },
+    "tide|greedy|random|weave_BE2": {
+      "casts": 1,
+      "name": "Thorn Pact"
+    },
+    "tide|greedy|random|weave_DB0": {
+      "casts": 5,
+      "name": "Blood Hex"
+    },
+    "tide|greedy|random|weave_DBE": {
+      "casts": 2,
+      "name": "Gravebloom"
+    },
+    "tide|greedy|random|weave_DE0": {
+      "casts": 11,
+      "name": "Grave Root"
+    },
+    "tide|greedy|random|weave_LB0": {
+      "casts": 81,
+      "name": "Martyr's Light"
+    },
+    "tide|greedy|random|weave_LB1": {
+      "casts": 737,
+      "name": "Sanguine Dawn"
+    },
+    "tide|greedy|random|weave_LB2": {
+      "casts": 22,
+      "name": "Vital Oath"
+    },
+    "tide|greedy|random|weave_LBE": {
+      "casts": 61,
+      "name": "Tree of Life"
+    },
+    "tide|greedy|random|weave_LD0": {
+      "casts": 470,
+      "name": "Eclipse Spark"
+    },
+    "tide|greedy|random|weave_LD2": {
+      "casts": 61,
+      "name": "Duskfire"
+    },
+    "tide|greedy|random|weave_LDB": {
+      "casts": 55,
+      "name": "Twilight Heart"
+    },
+    "tide|greedy|random|weave_LE0": {
+      "casts": 94,
+      "name": "Sunroot"
+    },
+    "tide|greedy|random|weave_LE1": {
+      "casts": 619,
+      "name": "Amber Lance"
+    },
+    "tide|greedy|random|weave_LE2": {
+      "casts": 13,
+      "name": "Sanctuary"
+    },
+    "tide|greedy|random|weave_WB0": {
+      "casts": 169,
+      "name": "Red Tide"
+    },
+    "tide|greedy|random|weave_WB1": {
+      "casts": 32,
+      "name": "Bloodspring"
+    },
+    "tide|greedy|random|weave_WB2": {
+      "casts": 37,
+      "name": "Crimson Current"
+    },
+    "tide|greedy|random|weave_WBE": {
+      "casts": 12,
+      "name": "Living Marsh"
+    },
+    "tide|greedy|random|weave_WD0": {
+      "casts": 210,
+      "name": "Blackwater"
+    },
+    "tide|greedy|random|weave_WD2": {
+      "casts": 21,
+      "name": "Undertow"
+    },
+    "tide|greedy|random|weave_WDB": {
+      "casts": 128,
+      "name": "Drowned Heart"
+    },
+    "tide|greedy|random|weave_WDE": {
+      "casts": 17,
+      "name": "Sunken Crypt"
+    },
+    "tide|greedy|random|weave_WE0": {
+      "casts": 60,
+      "name": "Living Spring"
+    },
+    "tide|greedy|random|weave_WE1": {
+      "casts": 43,
+      "name": "Riverstone"
+    },
+    "tide|greedy|random|weave_WL0": {
+      "casts": 209,
+      "name": "Dewlight"
+    },
+    "tide|greedy|random|weave_WL1": {
+      "casts": 782,
+      "name": "Prism Current"
+    },
+    "tide|greedy|random|weave_WLB": {
+      "casts": 784,
+      "name": "Mercy Tide"
+    },
+    "tide|greedy|random|weave_WLD": {
+      "casts": 1269,
+      "name": "Dusk Covenant"
+    },
+    "tide|greedy|random|weave_WLE": {
+      "casts": 743,
+      "name": "Sacred Grove"
+    },
+    "tide|greedy|skip|bolt": {
+      "casts": 5544,
+      "name": "Tidal Bolt"
+    },
+    "tide|greedy|skip|dawn": {
+      "casts": 1653,
+      "name": "Dawnfall"
+    },
+    "tide|greedy|skip|mend": {
+      "casts": 4945,
+      "name": "Mend"
+    },
+    "tide|greedy|skip|pulse": {
+      "casts": 1785,
+      "name": "Pulse"
+    },
+    "tide|greedy|skip|shard": {
+      "casts": 3213,
+      "name": "Sunshard"
+    },
+    "tide|greedy|skip|twin": {
+      "casts": 571,
+      "name": "Twin Tide"
+    },
+    "tide|greedy|skip|ward": {
+      "casts": 3221,
+      "name": "Tidal Ward"
+    },
+    "tide|greedy|skip|weave_WL0": {
+      "casts": 186,
+      "name": "Dewlight"
+    },
+    "tide|greedy|skip|weave_WL1": {
+      "casts": 782,
+      "name": "Prism Current"
+    },
+    "tide|random|random|bolt": {
+      "casts": 1657,
+      "name": "Tidal Bolt"
+    },
+    "tide|random|random|dawn": {
+      "casts": 137,
+      "name": "Dawnfall"
+    },
+    "tide|random|random|gem_B": {
+      "casts": 335,
+      "name": "Blood Bloom"
+    },
+    "tide|random|random|gem_D": {
+      "casts": 472,
+      "name": "Hex"
+    },
+    "tide|random|random|gem_E": {
+      "casts": 278,
+      "name": "Root"
+    },
+    "tide|random|random|mend": {
+      "casts": 2251,
+      "name": "Mend"
+    },
+    "tide|random|random|pulse": {
+      "casts": 1345,
+      "name": "Pulse"
+    },
+    "tide|random|random|scry": {
+      "casts": 1174,
+      "name": "Scry"
+    },
+    "tide|random|random|shard": {
+      "casts": 3222,
+      "name": "Sunshard"
+    },
+    "tide|random|random|study": {
+      "casts": 360,
+      "name": "Deep Study"
+    },
+    "tide|random|random|twin": {
+      "casts": 2281,
+      "name": "Twin Tide"
+    },
+    "tide|random|random|ward": {
+      "casts": 942,
+      "name": "Tidal Ward"
+    },
+    "tide|random|random|weave_BE0": {
+      "casts": 77,
+      "name": "Briar Blood"
+    },
+    "tide|random|random|weave_BE1": {
+      "casts": 5,
+      "name": "Heartwood"
+    },
+    "tide|random|random|weave_BE2": {
+      "casts": 10,
+      "name": "Thorn Pact"
+    },
+    "tide|random|random|weave_DB0": {
+      "casts": 63,
+      "name": "Blood Hex"
+    },
+    "tide|random|random|weave_DB1": {
+      "casts": 8,
+      "name": "Grave Thirst"
+    },
+    "tide|random|random|weave_DB2": {
+      "casts": 2,
+      "name": "Scarlet Pact"
+    },
+    "tide|random|random|weave_DBE": {
+      "casts": 3,
+      "name": "Gravebloom"
+    },
+    "tide|random|random|weave_DE0": {
+      "casts": 58,
+      "name": "Grave Root"
+    },
+    "tide|random|random|weave_DE1": {
+      "casts": 4,
+      "name": "Buried Memory"
+    },
+    "tide|random|random|weave_DE2": {
+      "casts": 9,
+      "name": "Obsidian Fang"
+    },
+    "tide|random|random|weave_LB0": {
+      "casts": 358,
+      "name": "Martyr's Light"
+    },
+    "tide|random|random|weave_LB1": {
+      "casts": 417,
+      "name": "Sanguine Dawn"
+    },
+    "tide|random|random|weave_LB2": {
+      "casts": 28,
+      "name": "Vital Oath"
+    },
+    "tide|random|random|weave_LBE": {
+      "casts": 62,
+      "name": "Tree of Life"
+    },
+    "tide|random|random|weave_LD0": {
+      "casts": 518,
+      "name": "Eclipse Spark"
+    },
+    "tide|random|random|weave_LD1": {
+      "casts": 210,
+      "name": "Twilight Pact"
+    },
+    "tide|random|random|weave_LD2": {
+      "casts": 44,
+      "name": "Duskfire"
+    },
+    "tide|random|random|weave_LDB": {
+      "casts": 55,
+      "name": "Twilight Heart"
+    },
+    "tide|random|random|weave_LDE": {
+      "casts": 34,
+      "name": "Forgotten Shrine"
+    },
+    "tide|random|random|weave_LE0": {
+      "casts": 272,
+      "name": "Sunroot"
+    },
+    "tide|random|random|weave_LE1": {
+      "casts": 356,
+      "name": "Amber Lance"
+    },
+    "tide|random|random|weave_LE2": {
+      "casts": 28,
+      "name": "Sanctuary"
+    },
+    "tide|random|random|weave_WB0": {
+      "casts": 388,
+      "name": "Red Tide"
+    },
+    "tide|random|random|weave_WB1": {
+      "casts": 266,
+      "name": "Bloodspring"
+    },
+    "tide|random|random|weave_WB2": {
+      "casts": 40,
+      "name": "Crimson Current"
+    },
+    "tide|random|random|weave_WBE": {
+      "casts": 46,
+      "name": "Living Marsh"
+    },
+    "tide|random|random|weave_WD0": {
+      "casts": 448,
+      "name": "Blackwater"
+    },
+    "tide|random|random|weave_WD1": {
+      "casts": 175,
+      "name": "Drowned Memory"
+    },
+    "tide|random|random|weave_WD2": {
+      "casts": 41,
+      "name": "Undertow"
+    },
+    "tide|random|random|weave_WDB": {
+      "casts": 61,
+      "name": "Drowned Heart"
+    },
+    "tide|random|random|weave_WDE": {
+      "casts": 54,
+      "name": "Sunken Crypt"
+    },
+    "tide|random|random|weave_WE0": {
+      "casts": 264,
+      "name": "Living Spring"
+    },
+    "tide|random|random|weave_WE1": {
+      "casts": 243,
+      "name": "Riverstone"
+    },
+    "tide|random|random|weave_WE2": {
+      "casts": 14,
+      "name": "Rootwater"
+    },
+    "tide|random|random|weave_WL0": {
+      "casts": 1842,
+      "name": "Dewlight"
+    },
+    "tide|random|random|weave_WL1": {
+      "casts": 2003,
+      "name": "Prism Current"
+    },
+    "tide|random|random|weave_WL2": {
+      "casts": 1257,
+      "name": "Mirrorwell"
+    },
+    "tide|random|random|weave_WLB": {
+      "casts": 264,
+      "name": "Mercy Tide"
+    },
+    "tide|random|random|weave_WLD": {
+      "casts": 435,
+      "name": "Dusk Covenant"
+    },
+    "tide|random|random|weave_WLE": {
+      "casts": 228,
+      "name": "Sacred Grove"
+    },
+    "tide|random|skip|bolt": {
+      "casts": 2386,
+      "name": "Tidal Bolt"
+    },
+    "tide|random|skip|dawn": {
+      "casts": 275,
+      "name": "Dawnfall"
+    },
+    "tide|random|skip|mend": {
+      "casts": 3200,
+      "name": "Mend"
+    },
+    "tide|random|skip|pulse": {
+      "casts": 1670,
+      "name": "Pulse"
+    },
+    "tide|random|skip|scry": {
+      "casts": 1605,
+      "name": "Scry"
+    },
+    "tide|random|skip|shard": {
+      "casts": 4124,
+      "name": "Sunshard"
+    },
+    "tide|random|skip|study": {
+      "casts": 520,
+      "name": "Deep Study"
+    },
+    "tide|random|skip|twin": {
+      "casts": 2921,
+      "name": "Twin Tide"
+    },
+    "tide|random|skip|ward": {
+      "casts": 1481,
+      "name": "Tidal Ward"
+    },
+    "tide|random|skip|weave_WL0": {
+      "casts": 2537,
+      "name": "Dewlight"
+    },
+    "tide|random|skip|weave_WL1": {
+      "casts": 2771,
+      "name": "Prism Current"
+    },
+    "tide|random|skip|weave_WL2": {
+      "casts": 1552,
+      "name": "Mirrorwell"
+    }
+  }
+}

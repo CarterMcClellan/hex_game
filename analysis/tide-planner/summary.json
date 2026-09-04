@@ -1,0 +1,511 @@
+{
+  "cases": 10000,
+  "class_definitions": [
+    {
+      "deck": {
+        "L": 11,
+        "W": 9
+      },
+      "elements": [
+        "W",
+        "L"
+      ],
+      "hp": 30,
+      "id": "tide",
+      "lines": [
+        "Water builds Tide, up to 3.",
+        "Light spends Tide to boost its spell.",
+        "Each Tide: +2 power or +1 draw."
+      ],
+      "name": "Tidecaller",
+      "role": "Patient combination caster",
+      "trait": "Ebb & Flow"
+    },
+    {
+      "deck": {
+        "A": 6,
+        "F": 14
+      },
+      "elements": [
+        "F",
+        "A"
+      ],
+      "hp": 28,
+      "id": "pyro",
+      "lines": [
+        "Fire gains +1 Heat and hits harder.",
+        "At 4+ Heat, Fire costs 2 HP.",
+        "Air vents Heat into healing."
+      ],
+      "name": "Pyromancer",
+      "role": "A volatile damage engine",
+      "trait": "Heat"
+    },
+    {
+      "deck": {
+        "B": 12,
+        "D": 8
+      },
+      "elements": [
+        "D",
+        "B"
+      ],
+      "hp": 22,
+      "id": "night",
+      "lines": [
+        "Blood spends HP for stronger spells.",
+        "Dark attacks steal half their damage.",
+        "Soul Feast steals all of its damage."
+      ],
+      "name": "Nightbinder",
+      "role": "Life is a resource",
+      "trait": "Blood Price"
+    }
+  ],
+  "elapsed_seconds": 642.081,
+  "encounters": [
+    {
+      "casts": 1,
+      "deck": {
+        "B": 8,
+        "D": 12
+      },
+      "flavor": "A flutter in the dusk. Your first spell awaits.",
+      "hp": 18,
+      "intent": "Small attacks \u00b7 one cast",
+      "lesson": "A small beginning",
+      "name": "Bat",
+      "place": "THE HOLLOW",
+      "portrait": "bat",
+      "reward": "bolt"
+    },
+    {
+      "casts": 1,
+      "deck": {
+        "D": 8,
+        "E": 12
+      },
+      "flavor": "A crooked grin, and a pocket full of stones.",
+      "hp": 28,
+      "intent": "Stronger patterns \u00b7 one cast",
+      "lesson": "Find the stronger pattern",
+      "name": "Goblin",
+      "place": "MOSSWOOD",
+      "portrait": "goblin",
+      "reward": "ward"
+    },
+    {
+      "casts": 1,
+      "deck": {
+        "B": 4,
+        "E": 16
+      },
+      "flavor": "Heavy hands. Stubborn roots. Pick your moment.",
+      "hp": 42,
+      "intent": "Heavy hits \u00b7 can regenerate once",
+      "lesson": "Know when to recover",
+      "name": "Troll",
+      "place": "THE OLD CROSSING",
+      "portrait": "troll",
+      "reward": "study"
+    },
+    {
+      "casts": 2,
+      "deck": {
+        "B": 8,
+        "D": 12
+      },
+      "flavor": "An old scholar with a dangerous second thought.",
+      "hp": 52,
+      "intent": "Draws and combines \u00b7 two casts",
+      "lesson": "Make your two casts count",
+      "name": "Necromancer",
+      "place": "QUIET GRAVES",
+      "portrait": "necromancer",
+      "reward": "dawn"
+    },
+    {
+      "casts": 2,
+      "deck": {
+        "A": 4,
+        "E": 6,
+        "F": 10
+      },
+      "flavor": "Every pattern you have learned leads here.",
+      "hp": 66,
+      "intent": "Three elements \u00b7 two casts",
+      "lesson": "Bring the whole spellbook",
+      "name": "Dragon",
+      "place": "THE EMBER DEN",
+      "portrait": "dragon",
+      "reward": ""
+    }
+  ],
+  "options": {
+    "classes": "tide",
+    "hp": "",
+    "n": "1000",
+    "out": "analysis/tide-planner",
+    "policies": "planner",
+    "primary": "",
+    "rewards": "skip,random",
+    "seed": "10000"
+  },
+  "policy_version": "hidden-order-invariant-v2",
+  "summaries": {
+    "tide|planner|random|0": {
+      "casts": 4041,
+      "drawn": 2270,
+      "healed": 1690,
+      "hp": 28800,
+      "n": 1000,
+      "spent": 0,
+      "turns": 2072,
+      "wins": 1000
+    },
+    "tide|planner|random|1": {
+      "casts": 5074,
+      "drawn": 2231,
+      "healed": 4822,
+      "hp": 24172,
+      "n": 1000,
+      "spent": 0,
+      "turns": 2567,
+      "wins": 1000
+    },
+    "tide|planner|random|2": {
+      "casts": 7605,
+      "drawn": 2693,
+      "healed": 6729,
+      "hp": 21775,
+      "n": 1000,
+      "spent": 0,
+      "turns": 3832,
+      "wins": 1000
+    },
+    "tide|planner|random|3": {
+      "casts": 9817,
+      "drawn": 3016,
+      "healed": 16885,
+      "hp": 16021,
+      "n": 1000,
+      "spent": 0,
+      "turns": 4946,
+      "wins": 1000
+    },
+    "tide|planner|random|4": {
+      "casts": 13709,
+      "drawn": 5717,
+      "healed": 42104,
+      "hp": 15244,
+      "n": 1000,
+      "spent": 0,
+      "turns": 6919,
+      "wins": 993
+    },
+    "tide|planner|random|campaign": {
+      "n": 1000,
+      "wins": 993
+    },
+    "tide|planner|skip|0": {
+      "casts": 4041,
+      "drawn": 2270,
+      "healed": 1690,
+      "hp": 28800,
+      "n": 1000,
+      "spent": 0,
+      "turns": 2072,
+      "wins": 1000
+    },
+    "tide|planner|skip|1": {
+      "casts": 5424,
+      "drawn": 2515,
+      "healed": 5639,
+      "hp": 23698,
+      "n": 1000,
+      "spent": 0,
+      "turns": 2754,
+      "wins": 1000
+    },
+    "tide|planner|skip|2": {
+      "casts": 8748,
+      "drawn": 3615,
+      "healed": 10560,
+      "hp": 21142,
+      "n": 1000,
+      "spent": 0,
+      "turns": 4432,
+      "wins": 1000
+    },
+    "tide|planner|skip|3": {
+      "casts": 11661,
+      "drawn": 3415,
+      "healed": 24939,
+      "hp": 14919,
+      "n": 1000,
+      "spent": 0,
+      "turns": 5881,
+      "wins": 1000
+    },
+    "tide|planner|skip|4": {
+      "casts": 12422,
+      "drawn": 9053,
+      "healed": 33144,
+      "hp": 13145,
+      "n": 1000,
+      "spent": 0,
+      "turns": 6278,
+      "wins": 984
+    },
+    "tide|planner|skip|campaign": {
+      "n": 1000,
+      "wins": 984
+    }
+  },
+  "usage": {
+    "tide|planner|random|bolt": {
+      "casts": 7075,
+      "name": "Tidal Bolt"
+    },
+    "tide|planner|random|dawn": {
+      "casts": 1501,
+      "name": "Dawnfall"
+    },
+    "tide|planner|random|gem_B": {
+      "casts": 70,
+      "name": "Blood Bloom"
+    },
+    "tide|planner|random|gem_D": {
+      "casts": 74,
+      "name": "Hex"
+    },
+    "tide|planner|random|gem_E": {
+      "casts": 23,
+      "name": "Root"
+    },
+    "tide|planner|random|mend": {
+      "casts": 4508,
+      "name": "Mend"
+    },
+    "tide|planner|random|pulse": {
+      "casts": 163,
+      "name": "Pulse"
+    },
+    "tide|planner|random|scry": {
+      "casts": 2145,
+      "name": "Scry"
+    },
+    "tide|planner|random|shard": {
+      "casts": 4437,
+      "name": "Sunshard"
+    },
+    "tide|planner|random|study": {
+      "casts": 800,
+      "name": "Deep Study"
+    },
+    "tide|planner|random|twin": {
+      "casts": 2840,
+      "name": "Twin Tide"
+    },
+    "tide|planner|random|ward": {
+      "casts": 2123,
+      "name": "Tidal Ward"
+    },
+    "tide|planner|random|weave_BE0": {
+      "casts": 57,
+      "name": "Briar Blood"
+    },
+    "tide|planner|random|weave_BE1": {
+      "casts": 4,
+      "name": "Heartwood"
+    },
+    "tide|planner|random|weave_BE2": {
+      "casts": 4,
+      "name": "Thorn Pact"
+    },
+    "tide|planner|random|weave_DB0": {
+      "casts": 1,
+      "name": "Blood Hex"
+    },
+    "tide|planner|random|weave_DBE": {
+      "casts": 5,
+      "name": "Gravebloom"
+    },
+    "tide|planner|random|weave_DE0": {
+      "casts": 5,
+      "name": "Grave Root"
+    },
+    "tide|planner|random|weave_DE2": {
+      "casts": 9,
+      "name": "Obsidian Fang"
+    },
+    "tide|planner|random|weave_LB0": {
+      "casts": 206,
+      "name": "Martyr's Light"
+    },
+    "tide|planner|random|weave_LB1": {
+      "casts": 2134,
+      "name": "Sanguine Dawn"
+    },
+    "tide|planner|random|weave_LB2": {
+      "casts": 47,
+      "name": "Vital Oath"
+    },
+    "tide|planner|random|weave_LBE": {
+      "casts": 130,
+      "name": "Tree of Life"
+    },
+    "tide|planner|random|weave_LD0": {
+      "casts": 1172,
+      "name": "Eclipse Spark"
+    },
+    "tide|planner|random|weave_LD1": {
+      "casts": 180,
+      "name": "Twilight Pact"
+    },
+    "tide|planner|random|weave_LD2": {
+      "casts": 130,
+      "name": "Duskfire"
+    },
+    "tide|planner|random|weave_LDB": {
+      "casts": 174,
+      "name": "Twilight Heart"
+    },
+    "tide|planner|random|weave_LDE": {
+      "casts": 27,
+      "name": "Forgotten Shrine"
+    },
+    "tide|planner|random|weave_LE0": {
+      "casts": 92,
+      "name": "Sunroot"
+    },
+    "tide|planner|random|weave_LE1": {
+      "casts": 1743,
+      "name": "Amber Lance"
+    },
+    "tide|planner|random|weave_LE2": {
+      "casts": 20,
+      "name": "Sanctuary"
+    },
+    "tide|planner|random|weave_WB0": {
+      "casts": 514,
+      "name": "Red Tide"
+    },
+    "tide|planner|random|weave_WB1": {
+      "casts": 29,
+      "name": "Bloodspring"
+    },
+    "tide|planner|random|weave_WB2": {
+      "casts": 71,
+      "name": "Crimson Current"
+    },
+    "tide|planner|random|weave_WBE": {
+      "casts": 34,
+      "name": "Living Marsh"
+    },
+    "tide|planner|random|weave_WD0": {
+      "casts": 289,
+      "name": "Blackwater"
+    },
+    "tide|planner|random|weave_WD1": {
+      "casts": 46,
+      "name": "Drowned Memory"
+    },
+    "tide|planner|random|weave_WD2": {
+      "casts": 44,
+      "name": "Undertow"
+    },
+    "tide|planner|random|weave_WDB": {
+      "casts": 248,
+      "name": "Drowned Heart"
+    },
+    "tide|planner|random|weave_WDE": {
+      "casts": 31,
+      "name": "Sunken Crypt"
+    },
+    "tide|planner|random|weave_WE0": {
+      "casts": 67,
+      "name": "Living Spring"
+    },
+    "tide|planner|random|weave_WE1": {
+      "casts": 210,
+      "name": "Riverstone"
+    },
+    "tide|planner|random|weave_WE2": {
+      "casts": 9,
+      "name": "Rootwater"
+    },
+    "tide|planner|random|weave_WL0": {
+      "casts": 1178,
+      "name": "Dewlight"
+    },
+    "tide|planner|random|weave_WL1": {
+      "casts": 1027,
+      "name": "Prism Current"
+    },
+    "tide|planner|random|weave_WL2": {
+      "casts": 1074,
+      "name": "Mirrorwell"
+    },
+    "tide|planner|random|weave_WLB": {
+      "casts": 548,
+      "name": "Mercy Tide"
+    },
+    "tide|planner|random|weave_WLD": {
+      "casts": 2094,
+      "name": "Dusk Covenant"
+    },
+    "tide|planner|random|weave_WLE": {
+      "casts": 834,
+      "name": "Sacred Grove"
+    },
+    "tide|planner|skip|bolt": {
+      "casts": 11925,
+      "name": "Tidal Bolt"
+    },
+    "tide|planner|skip|dawn": {
+      "casts": 3146,
+      "name": "Dawnfall"
+    },
+    "tide|planner|skip|mend": {
+      "casts": 7554,
+      "name": "Mend"
+    },
+    "tide|planner|skip|pulse": {
+      "casts": 309,
+      "name": "Pulse"
+    },
+    "tide|planner|skip|scry": {
+      "casts": 2662,
+      "name": "Scry"
+    },
+    "tide|planner|skip|shard": {
+      "casts": 6321,
+      "name": "Sunshard"
+    },
+    "tide|planner|skip|study": {
+      "casts": 1026,
+      "name": "Deep Study"
+    },
+    "tide|planner|skip|twin": {
+      "casts": 2375,
+      "name": "Twin Tide"
+    },
+    "tide|planner|skip|ward": {
+      "casts": 2335,
+      "name": "Tidal Ward"
+    },
+    "tide|planner|skip|weave_WL0": {
+      "casts": 1731,
+      "name": "Dewlight"
+    },
+    "tide|planner|skip|weave_WL1": {
+      "casts": 1027,
+      "name": "Prism Current"
+    },
+    "tide|planner|skip|weave_WL2": {
+      "casts": 1885,
+      "name": "Mirrorwell"
+    }
+  }
+}

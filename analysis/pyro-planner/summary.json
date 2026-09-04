@@ -1,0 +1,491 @@
+{
+  "cases": 10000,
+  "class_definitions": [
+    {
+      "deck": {
+        "L": 11,
+        "W": 9
+      },
+      "elements": [
+        "W",
+        "L"
+      ],
+      "hp": 30,
+      "id": "tide",
+      "lines": [
+        "Water builds Tide, up to 3.",
+        "Light spends Tide to boost its spell.",
+        "Each Tide: +2 power or +1 draw."
+      ],
+      "name": "Tidecaller",
+      "role": "Patient combination caster",
+      "trait": "Ebb & Flow"
+    },
+    {
+      "deck": {
+        "A": 6,
+        "F": 14
+      },
+      "elements": [
+        "F",
+        "A"
+      ],
+      "hp": 28,
+      "id": "pyro",
+      "lines": [
+        "Fire gains +1 Heat and hits harder.",
+        "At 4+ Heat, Fire costs 2 HP.",
+        "Air vents Heat into healing."
+      ],
+      "name": "Pyromancer",
+      "role": "A volatile damage engine",
+      "trait": "Heat"
+    },
+    {
+      "deck": {
+        "B": 12,
+        "D": 8
+      },
+      "elements": [
+        "D",
+        "B"
+      ],
+      "hp": 22,
+      "id": "night",
+      "lines": [
+        "Blood spends HP for stronger spells.",
+        "Dark attacks steal half their damage.",
+        "Soul Feast steals all of its damage."
+      ],
+      "name": "Nightbinder",
+      "role": "Life is a resource",
+      "trait": "Blood Price"
+    }
+  ],
+  "elapsed_seconds": 285.406,
+  "encounters": [
+    {
+      "casts": 1,
+      "deck": {
+        "B": 8,
+        "D": 12
+      },
+      "flavor": "A flutter in the dusk. Your first spell awaits.",
+      "hp": 18,
+      "intent": "Small attacks \u00b7 one cast",
+      "lesson": "A small beginning",
+      "name": "Bat",
+      "place": "THE HOLLOW",
+      "portrait": "bat",
+      "reward": "bolt"
+    },
+    {
+      "casts": 1,
+      "deck": {
+        "D": 8,
+        "E": 12
+      },
+      "flavor": "A crooked grin, and a pocket full of stones.",
+      "hp": 28,
+      "intent": "Stronger patterns \u00b7 one cast",
+      "lesson": "Find the stronger pattern",
+      "name": "Goblin",
+      "place": "MOSSWOOD",
+      "portrait": "goblin",
+      "reward": "ward"
+    },
+    {
+      "casts": 1,
+      "deck": {
+        "B": 4,
+        "E": 16
+      },
+      "flavor": "Heavy hands. Stubborn roots. Pick your moment.",
+      "hp": 42,
+      "intent": "Heavy hits \u00b7 can regenerate once",
+      "lesson": "Know when to recover",
+      "name": "Troll",
+      "place": "THE OLD CROSSING",
+      "portrait": "troll",
+      "reward": "study"
+    },
+    {
+      "casts": 2,
+      "deck": {
+        "B": 8,
+        "D": 12
+      },
+      "flavor": "An old scholar with a dangerous second thought.",
+      "hp": 52,
+      "intent": "Draws and combines \u00b7 two casts",
+      "lesson": "Make your two casts count",
+      "name": "Necromancer",
+      "place": "QUIET GRAVES",
+      "portrait": "necromancer",
+      "reward": "dawn"
+    },
+    {
+      "casts": 2,
+      "deck": {
+        "A": 4,
+        "E": 6,
+        "F": 10
+      },
+      "flavor": "Every pattern you have learned leads here.",
+      "hp": 66,
+      "intent": "Three elements \u00b7 two casts",
+      "lesson": "Bring the whole spellbook",
+      "name": "Dragon",
+      "place": "THE EMBER DEN",
+      "portrait": "dragon",
+      "reward": ""
+    }
+  ],
+  "options": {
+    "classes": "pyro",
+    "hp": "",
+    "n": "1000",
+    "out": "analysis/pyro-planner",
+    "policies": "planner",
+    "primary": "",
+    "rewards": "skip,random",
+    "seed": "10000"
+  },
+  "policy_version": "hidden-order-invariant-v2",
+  "summaries": {
+    "pyro|planner|random|0": {
+      "casts": 3251,
+      "drawn": 1169,
+      "healed": 601,
+      "hp": 27807,
+      "n": 1000,
+      "spent": 0,
+      "turns": 1670,
+      "wins": 1000
+    },
+    "pyro|planner|random|1": {
+      "casts": 4055,
+      "drawn": 785,
+      "healed": 904,
+      "hp": 22024,
+      "n": 1000,
+      "spent": 0,
+      "turns": 2029,
+      "wins": 1000
+    },
+    "pyro|planner|random|2": {
+      "casts": 5726,
+      "drawn": 1130,
+      "healed": 3432,
+      "hp": 22403,
+      "n": 1000,
+      "spent": 454,
+      "turns": 2901,
+      "wins": 1000
+    },
+    "pyro|planner|random|3": {
+      "casts": 6221,
+      "drawn": 357,
+      "healed": 2817,
+      "hp": 13367,
+      "n": 1000,
+      "spent": 2662,
+      "turns": 3122,
+      "wins": 999
+    },
+    "pyro|planner|random|4": {
+      "casts": 7666,
+      "drawn": 907,
+      "healed": 6221,
+      "hp": 6806,
+      "n": 1000,
+      "spent": 2106,
+      "turns": 3841,
+      "wins": 789
+    },
+    "pyro|planner|random|campaign": {
+      "n": 1000,
+      "wins": 788
+    },
+    "pyro|planner|skip|0": {
+      "casts": 3251,
+      "drawn": 1169,
+      "healed": 601,
+      "hp": 27807,
+      "n": 1000,
+      "spent": 0,
+      "turns": 1670,
+      "wins": 1000
+    },
+    "pyro|planner|skip|1": {
+      "casts": 4046,
+      "drawn": 667,
+      "healed": 577,
+      "hp": 21719,
+      "n": 1000,
+      "spent": 0,
+      "turns": 2023,
+      "wins": 1000
+    },
+    "pyro|planner|skip|2": {
+      "casts": 5906,
+      "drawn": 372,
+      "healed": 3262,
+      "hp": 21994,
+      "n": 1000,
+      "spent": 850,
+      "turns": 3016,
+      "wins": 1000
+    },
+    "pyro|planner|skip|3": {
+      "casts": 6621,
+      "drawn": 116,
+      "healed": 3196,
+      "hp": 12162,
+      "n": 1000,
+      "spent": 3144,
+      "turns": 3311,
+      "wins": 995
+    },
+    "pyro|planner|skip|4": {
+      "casts": 7743,
+      "drawn": 2078,
+      "healed": 5127,
+      "hp": 3569,
+      "n": 1000,
+      "spent": 1624,
+      "turns": 3877,
+      "wins": 454
+    },
+    "pyro|planner|skip|campaign": {
+      "n": 1000,
+      "wins": 453
+    }
+  },
+  "usage": {
+    "pyro|planner|random|bolt": {
+      "casts": 565,
+      "name": "Flame Lance"
+    },
+    "pyro|planner|random|dawn": {
+      "casts": 649,
+      "name": "Wildfire"
+    },
+    "pyro|planner|random|gem_B": {
+      "casts": 166,
+      "name": "Blood Bloom"
+    },
+    "pyro|planner|random|gem_D": {
+      "casts": 246,
+      "name": "Hex"
+    },
+    "pyro|planner|random|gem_E": {
+      "casts": 69,
+      "name": "Root"
+    },
+    "pyro|planner|random|mend": {
+      "casts": 518,
+      "name": "Cooling Breath"
+    },
+    "pyro|planner|random|pulse": {
+      "casts": 32,
+      "name": "Pulse"
+    },
+    "pyro|planner|random|scry": {
+      "casts": 1117,
+      "name": "Bellows"
+    },
+    "pyro|planner|random|shard": {
+      "casts": 1239,
+      "name": "Firebrand"
+    },
+    "pyro|planner|random|study": {
+      "casts": 132,
+      "name": "Stoke"
+    },
+    "pyro|planner|random|twin": {
+      "casts": 6206,
+      "name": "Kindle"
+    },
+    "pyro|planner|random|ward": {
+      "casts": 989,
+      "name": "Backdraft"
+    },
+    "pyro|planner|random|weave_BA0": {
+      "casts": 4,
+      "name": "Quickblood"
+    },
+    "pyro|planner|random|weave_BA1": {
+      "casts": 16,
+      "name": "Razorwind"
+    },
+    "pyro|planner|random|weave_BA2": {
+      "casts": 91,
+      "name": "Second Heart"
+    },
+    "pyro|planner|random|weave_BE0": {
+      "casts": 12,
+      "name": "Briar Blood"
+    },
+    "pyro|planner|random|weave_BEA": {
+      "casts": 26,
+      "name": "Wildheart"
+    },
+    "pyro|planner|random|weave_BEF": {
+      "casts": 61,
+      "name": "Molten Heart"
+    },
+    "pyro|planner|random|weave_BF0": {
+      "casts": 1031,
+      "name": "Bloodfire"
+    },
+    "pyro|planner|random|weave_BF1": {
+      "casts": 6,
+      "name": "Crimson Ember"
+    },
+    "pyro|planner|random|weave_BF2": {
+      "casts": 149,
+      "name": "Phoenix Blood"
+    },
+    "pyro|planner|random|weave_BFA": {
+      "casts": 583,
+      "name": "Crimson Tempest"
+    },
+    "pyro|planner|random|weave_DA0": {
+      "casts": 4,
+      "name": "Nightwind"
+    },
+    "pyro|planner|random|weave_DA1": {
+      "casts": 26,
+      "name": "Hollow Gale"
+    },
+    "pyro|planner|random|weave_DA2": {
+      "casts": 10,
+      "name": "Ravenflight"
+    },
+    "pyro|planner|random|weave_DB0": {
+      "casts": 10,
+      "name": "Blood Hex"
+    },
+    "pyro|planner|random|weave_DBA": {
+      "casts": 4,
+      "name": "Raven Covenant"
+    },
+    "pyro|planner|random|weave_DBF": {
+      "casts": 101,
+      "name": "Hellheart"
+    },
+    "pyro|planner|random|weave_DE0": {
+      "casts": 2,
+      "name": "Grave Root"
+    },
+    "pyro|planner|random|weave_DEA": {
+      "casts": 1,
+      "name": "Dust of Ages"
+    },
+    "pyro|planner|random|weave_DEF": {
+      "casts": 49,
+      "name": "Ashen Tomb"
+    },
+    "pyro|planner|random|weave_DF0": {
+      "casts": 811,
+      "name": "Witchfire"
+    },
+    "pyro|planner|random|weave_DF1": {
+      "casts": 2,
+      "name": "Ashen Secrets"
+    },
+    "pyro|planner|random|weave_DF2": {
+      "casts": 590,
+      "name": "Hellbrand"
+    },
+    "pyro|planner|random|weave_DFA": {
+      "casts": 808,
+      "name": "Witchstorm"
+    },
+    "pyro|planner|random|weave_EA0": {
+      "casts": 151,
+      "name": "Dust Devil"
+    },
+    "pyro|planner|random|weave_EA2": {
+      "casts": 41,
+      "name": "Mountain Breath"
+    },
+    "pyro|planner|random|weave_EF0": {
+      "casts": 130,
+      "name": "Magma Shard"
+    },
+    "pyro|planner|random|weave_EF1": {
+      "casts": 4,
+      "name": "Obsidian Skin"
+    },
+    "pyro|planner|random|weave_EF2": {
+      "casts": 739,
+      "name": "Volcanic Spear"
+    },
+    "pyro|planner|random|weave_EFA": {
+      "casts": 569,
+      "name": "Volcanic Storm"
+    },
+    "pyro|planner|random|weave_FA0": {
+      "casts": 3908,
+      "name": "Firewhirl"
+    },
+    "pyro|planner|random|weave_FA1": {
+      "casts": 4959,
+      "name": "Furnace Gale"
+    },
+    "pyro|planner|random|weave_FA2": {
+      "casts": 93,
+      "name": "Cinderflight"
+    },
+    "pyro|planner|skip|bolt": {
+      "casts": 728,
+      "name": "Flame Lance"
+    },
+    "pyro|planner|skip|dawn": {
+      "casts": 1342,
+      "name": "Wildfire"
+    },
+    "pyro|planner|skip|mend": {
+      "casts": 726,
+      "name": "Cooling Breath"
+    },
+    "pyro|planner|skip|pulse": {
+      "casts": 20,
+      "name": "Pulse"
+    },
+    "pyro|planner|skip|scry": {
+      "casts": 1154,
+      "name": "Bellows"
+    },
+    "pyro|planner|skip|shard": {
+      "casts": 1464,
+      "name": "Firebrand"
+    },
+    "pyro|planner|skip|study": {
+      "casts": 171,
+      "name": "Stoke"
+    },
+    "pyro|planner|skip|twin": {
+      "casts": 8356,
+      "name": "Kindle"
+    },
+    "pyro|planner|skip|ward": {
+      "casts": 1564,
+      "name": "Backdraft"
+    },
+    "pyro|planner|skip|weave_FA0": {
+      "casts": 4703,
+      "name": "Firewhirl"
+    },
+    "pyro|planner|skip|weave_FA1": {
+      "casts": 7275,
+      "name": "Furnace Gale"
+    },
+    "pyro|planner|skip|weave_FA2": {
+      "casts": 64,
+      "name": "Cinderflight"
+    }
+  }
+}
