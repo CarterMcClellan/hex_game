@@ -82,6 +82,19 @@ func run():
 	verify(b.player.hand.size()==5,"draw exactly five on first turn")
 	verify(b.learned.size()==8,"starter library")
 	verify(not b.cast_allowed(spells[2]),"healing at full HP cannot waste a cast")
+	var lethal_small=R.spell("test_lethal","Quick Finish","damage",5,{0:"W",1:"L"})
+	var complex_heal=R.spell("test_complex","Grand Recovery","heal",1,{0:"W",1:"W",2:"L",3:"L"})
+	var unavailable=R.spell("test_missing","Missing Blood","damage",99,{0:"B"})
+	b.learned=[complex_heal,lethal_small,unavailable]
+	b.player.hand=["W","W","L","L"]
+	b.player.hp-=1
+	b.enemy.hp=4
+	var castable=b.castable_spells()
+	verify(castable.size()==2 and castable[0].id=="test_lethal","castable list hides unavailable spells and puts a finishing blow first")
+	b.enemy.hp=10
+	castable=b.castable_spells()
+	verify(castable[0].id=="test_complex" and R.occupied(castable[0].pattern)>R.occupied(castable[1].pattern),"nonlethal spells sort from most to fewest runes")
+	b=B.new(0,42)
 	var original = b.player.hand.duplicate()
 	verify(b.place(0,0),"place from hand")
 	verify(b.conserved(b.player,true)==20,"placement conserves deck")

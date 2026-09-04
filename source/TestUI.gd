@@ -24,6 +24,16 @@ func key(code):
 	Input.parse_input_event(e)
 	await process_frame
 
+func shortcut_spell(id):
+	var visible=game.visible_spells()
+	var index=-1
+	for i in range(visible.size()):
+		if visible[i].id==id: index=i
+	verify(index>=0,"spell "+id+" is available for its shortcut")
+	if index<0: return
+	game.spell_page=int(index/game.spells_per_page())
+	await key(KEY_1+index%game.spells_per_page())
+
 func click_at(pos):
 	for pressed in [true,false]:
 		var e=InputEventMouseButton.new()
@@ -68,8 +78,25 @@ func run():
 	game=load("res://Main.tscn").instantiate()
 	game.test_mode=true
 	game.save_file="res://test-progress.cfg"
+	var portrait_command="--portrait-command" in OS.get_cmdline_user_args()
+	game.force_command_layout=portrait_command
 	root.add_child(game)
 	await process_frame
+	if portrait_command:
+		await capture("v8-browser-mobile-class")
+		game.choose_class("tide")
+		await process_frame
+		await capture("v8-browser-mobile-map")
+		game.start_fight(4)
+		game.battle.player.hand=["W","W","W","L","L"]
+		game.battle.enemy.hp=8
+		await process_frame
+		await capture("v8-browser-mobile")
+		verify(game.command_is_portrait(),"portrait browser view selects the mobile layout")
+		verify(game.card_rects.is_empty() and game.regions.any(func(region): return region.id.begins_with("recipe:") and region.rect.size.x>1000),"mobile battle uses full-width spell cards without a hand")
+		print("MOBILE UI CHECKS: %d — %s" % [checks,"FAIL" if failed else "PASS"])
+		quit(1 if failed else 0)
+		return
 	verify(game.class_id=="" and game.modal=="class","fresh campaign opens class picker before map")
 	await key(KEY_ESCAPE)
 	verify(game.modal=="class","fresh campaign cannot bypass class selection")
@@ -106,7 +133,9 @@ func run():
 	verify(game.slot_at(game.ENEMY_CENTER)==-1 and game.slot_at(game.PLAYER_CENTER)==-1,"portrait hexes are not playable slots")
 	await process_frame
 	# Click the actual Twin Tide row. No second Arrange action.
-	await click_at(Vector2(1200,146+76+30))
+	await process_frame
+	var twin_region=game.regions.filter(func(region): return region.id=="recipe:twin")[0]
+	await click_at(twin_region.rect.get_center())
 	verify(game.battle.ready_spell().id=="twin","click spell fills exact pattern immediately")
 	verify(game.battle.player.hand.size()==3 and game.battle.enemy.hp==18,"autofill spends cards only on board, never casts")
 	verify(game.slot_impacts.size()==2,"each placed gem has an impact animation")
@@ -127,9 +156,10 @@ func run():
 	await capture("v7-attack")
 	await create_timer(0.65).timeout
 	var prior_board=game.battle.board.duplicate()
-	await key(KEY_1)
+	verify(not game.visible_spells().any(func(recipe): return recipe.id=="pulse"),"Pulse disappears when the remaining cast budget cannot pay for it")
+	game.fill_spell("pulse")
 	verify(game.battle.board==prior_board and game.battle.ready_spell().is_empty(),"Pulse cannot be filled as a second cast")
-	await key(KEY_5)
+	await shortcut_spell("shard")
 	verify(game.battle.ready_spell().id=="shard","5 fills Sunshard from mixed leftovers")
 	await key(KEY_ENTER)
 	await create_timer(3.0).timeout
@@ -144,7 +174,7 @@ func run():
 	await key(KEY_BACKSPACE)
 	verify(R.occupied(game.battle.board)==0,"Backspace returns placed cards")
 	game.battle.player.hand=["W","W","W","L","L"]
-	await key(KEY_4)
+	await shortcut_spell("scry")
 	verify(game.battle.ready_spell().id=="scry","4 autofills Scry")
 	await key(KEY_ENTER)
 	verify(game.battle.player.hand.size()==6 and game.cast_fx.effect=="draw","draw animation accompanies net extra ingredient")
@@ -154,7 +184,7 @@ func run():
 	game.battle.clear_board()
 	game.battle.player.hand=["L","L","W"]
 	game.battle.player.hp=game.battle.player.max_hp-10
-	await key(KEY_3)
+	await shortcut_spell("mend")
 	verify(game.battle.ready_spell().id=="mend","3 autofills healing pattern")
 	await key(KEY_ENTER)
 	verify(game.cast_fx.effect=="heal","healing animation is distinct")
@@ -167,7 +197,7 @@ func run():
 	game.battle.player.hand=["W","W","W","L","L"]
 	await process_frame
 	verify(game.regions.any(func(r): return r.id=="cast" and r.rect.position.x>1000),"Cast lives above End turn in spell sidebar")
-	await key(KEY_9)
+	await shortcut_spell("dawn")
 	verify(game.battle.ready_spell().id=="dawn","9 fills Dawnfall with all five gems")
 	await create_timer(0.45).timeout
 	await capture("v7-battle")
@@ -265,8 +295,9 @@ func run():
 	game.activate("spells_next")
 	await process_frame
 	verify(game.spell_page==1,"captured spells have a second page")
+	var second_page_first=game.visible_spells()[game.spells_per_page()].id
 	await key(KEY_1)
-	verify(game.battle.ready_spell().id=="gem_W","number keys fill correct spell on second page")
+	verify(game.battle.ready_spell().id==second_page_first,"number keys fill the first sorted spell on the second page")
 	await capture("v7-captured-spell")
 	game.save_file="res://test-progress.cfg"
 	game.test_mode=false
@@ -287,25 +318,25 @@ func run():
 	game.start_fight(4)
 	game.battle.heat=4
 	game.battle.player.hand=["F","F","A","A","F"]
-	await key(KEY_1+1)
+	await shortcut_spell("twin")
 	verify(game.battle.ready_spell().name=="Kindle" and game.battle.spell_text(game.battle.ready_spell()).contains("−2 HP"),"Fire UI previews overheat health cost")
 	await capture("v7-pyro-hot")
 	await key(KEY_ENTER)
 	verify(game.battle.heat==5 and game.battle.player.hp==26 and game.cast_fx.hp_cost==2,"cast updates visible Heat and health cost effect")
 	await create_timer(0.9).timeout
-	await key(KEY_3)
+	await shortcut_spell("mend")
 	await key(KEY_ENTER)
 	verify(game.battle.heat==0 and game.battle.player.hp==28,"Air UI cast vents and heals")
 	game.choose_class("night")
 	game.start_fight(0)
 	game.battle.player.hand=["B","B","D","D","B"]
-	await key(KEY_3)
+	await shortcut_spell("mend")
 	verify(game.battle.ready_spell().effect=="damage","Nightbinder third spell is blood attack rather than healing")
 	await capture("v7-night-offering")
 	await key(KEY_ENTER)
 	verify(game.battle.player.hp==19 and game.battle.enemy.hp==10,"Blood price resolves in real UI")
 	await create_timer(0.9).timeout
-	await key(KEY_2)
+	await shortcut_spell("twin")
 	await key(KEY_ENTER)
 	verify(game.battle.player.hp==21 and game.cast_fx.healed==2,"Dark life steal is shown in casting effect")
 	game.choose_class("tide")
@@ -313,28 +344,40 @@ func run():
 	game.campaign_deck["D"]=1
 	game.start_fight(1)
 	game.battle.player.hand=["W","D","L","W","L"]
-	game.activate("filter:weaves")
 	await process_frame
-	verify(game.visible_spells().all(func(recipe): return recipe.get("weave",false)),"Weaves filter isolates combinations")
-	await capture("v7-weaves")
+	verify(game.visible_spells().all(func(recipe): return game.battle.cast_allowed(recipe) and R.can_make(game.battle.available_cards(),recipe)),"combat list contains only spells that can be cast now")
+	for i in range(1,game.visible_spells().size()):
+		var previous=game.visible_spells()[i-1]
+		var current=game.visible_spells()[i]
+		if not game.battle.is_lethal_spell(previous) and not game.battle.is_lethal_spell(current):
+			verify(R.occupied(previous.pattern)>=R.occupied(current.pattern),"nonlethal castable spells descend by rune count")
+	var enemy_hp=game.battle.enemy.hp
+	game.battle.enemy.hp=4
+	verify(not game.visible_spells().is_empty() and game.battle.is_lethal_spell(game.visible_spells()[0]),"a finishing blow rises to the top of the spell list")
+	game.battle.enemy.hp=enemy_hp
+	game.force_command_layout=true
+	await process_frame
+	verify(game.card_rects.is_empty() and game.regions.any(func(region): return region.id.begins_with("recipe:") and region.rect.size.x>500),"browser command layout hides the hand and presents large spell cards")
+	verify(game.regions.any(func(region): return region.id=="settings"),"browser command layout exposes a touch-friendly menu")
+	await capture("v8-browser-command")
+	game.force_command_layout=false
+	await process_frame
+	await capture("v7-castable-spells")
 	game.fill_spell("weave_WD0")
 	verify(game.battle.ready_spell().name=="Blackwater","captured Dark fills a mixed Water spell")
 	await key(KEY_ENTER)
 	verify(game.battle.tide==1,"mixed spell updates class resource through UI")
 	await create_timer(0.9).timeout
-	game.activate("filter:ready")
 	await process_frame
-	verify(game.visible_spells().all(func(recipe): return game.battle.cast_allowed(recipe) and R.can_make(game.battle.available_cards(),recipe)),"Ready lists only castable recipes")
 	var first_ready=game.visible_spells()[0].id
 	await key(KEY_1)
-	verify(game.battle.ready_spell().id==first_ready,"number shortcut follows the filtered visible list")
+	verify(game.battle.ready_spell().id==first_ready,"number shortcut follows the castable sorted list")
 	game.battle.clear_board()
-	game.activate("filter:match")
 	game.battle.player.hand=["W","D","L"]
 	game.battle.casts=2
 	game.battle.place(1,3)
 	await process_frame
-	verify(game.visible_spells().any(func(recipe): return recipe.id=="weave_WD0"),"Match finds patterns from a manually placed foreign gem")
+	verify(game.visible_spells().any(func(recipe): return recipe.id=="weave_WD0"),"castable list includes ingredients already placed on the board")
 	game.modal="book"
 	game.activate("book_scope:all")
 	game.activate("book_element:D")

@@ -1,6 +1,6 @@
 # Play in a browser
 
-The game exports to a static website with Godot 4.6.3. It uses the same classes, campaign, spell pool and combat rules as the native game. The game fills the browser window; Escape opens settings.
+The game exports to a static website with Godot 4.6.3. It uses the same classes, campaign, spell pool and combat rules as the native game. The responsive browser interface fills the window and uses large, touch-friendly spell cards instead of showing the hand and rune board. A visible Menu button replaces the need for Escape on touch devices.
 
 ## GitHub Pages
 
@@ -36,4 +36,4 @@ References: [Godot web export](https://docs.godotengine.org/en/stable/tutorials/
 
 ## Local validation
 
-The release export was tested in Chromium at `/hex_game/` with no cross-origin isolation headers. Class selection, clicking a spell and casting with Enter, the enemy response, Escape settings, class persistence after reload, and resizing from 1440×900 to 960×600 worked. The audio context was running and produced a nonzero measured signal after interaction. No browser console errors were recorded. The workflow YAML and its deployment conditions were validated locally; GitHub Actions has not run until the branch can be published.
+The release export was tested in Chromium at `/hex_game/` with no cross-origin isolation headers. Class selection, touch spell selection and casting, the enemy response, Menu settings, class persistence after reload, and responsive layouts from 1440×900 down to a 390×844 phone viewport worked. The audio context was running and produced a nonzero measured signal after interaction. No browser console errors were recorded. The workflow YAML and its deployment conditions were validated locally; GitHub Actions has not run until the branch can be published.

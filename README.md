@@ -32,7 +32,7 @@ See `analysis/BALANCE-REPORT.md` for win rates, confidence intervals, enemy matc
 
 Choose **Escape → Begin a new journey** to try the new starting compositions. Existing campaigns keep their exact saved gem counts. Updated class HP applies when a fight starts.
 
-Captured gems combine with your existing deck through the shared weaves. Recipes appear when your actual deck supports their gem counts; duplicate rewards can unlock larger patterns. Each reward previews new combinations. **Ready**, **Match** and **Weaves** filter combat spells; the spellbook's **All runes** view shows future recipes and missing ingredients. See `RUNE-ATLAS.md` and `CLASS-GUIDE.md` for the complete catalog and class mechanics.
+Captured gems combine with your existing deck through the shared weaves. Recipes appear when your actual deck supports their gem counts; duplicate rewards can unlock larger patterns. Each reward previews new combinations. Combat shows only spells you can cast right now, ordered by the number of runes they use; any finishing blow moves to the top. The spellbook's **All runes** view still shows future recipes and missing ingredients. See `RUNE-ATLAS.md` and `CLASS-GUIDE.md` for the complete catalog and class mechanics.
 
 ## Play
 
@@ -44,7 +44,7 @@ Use up to two casts per turn. Damage, healing and drawing are available. Click a
 
 The enemy also draws from a finite deck and keeps unused cards. Victories teach the next class pattern and offer a gem reward (choose one gem or skip). Every fight starts at full HP with your campaign deck shuffled. Defeat lets you retry without losing your deck.
 
-The seven playable hexes form one regular honeycomb grid. Character hexes above and below are the same size, with attached HP bars and stars indicating casts. They do not accept cards. Cast sits above End turn in the spell panel. Settings, help and the spellbook pause gameplay.
+The native game keeps the full seven-hex board, hand, and drag controls. In a browser, combat switches to a cleaner spell-command view: choose a large spell card, then cast it. Health, casts, and class resources remain visible, while the hand and rune board stay out of the way. Settings, help and the spellbook pause gameplay.
 
 ## Keyboard
 
@@ -83,7 +83,7 @@ Save location: `~/Library/Application Support/Godot/app_userdata/Hexbound/progre
 
 ## Validation
 
-31,102 rules/regression checks, 148 rendered interface and screenshot checks, and 405 simulation-agent checks passed from this repository copy. These cover every weave, class interactions, card conservation, rewards, saves, input, audio transitions and simulation isolation. The agent cannot inspect the true draw order or mutate a live battle while planning.
+31,104 rules/regression checks, 172 rendered interface and screenshot checks, and 405 simulation-agent checks passed from this repository copy. These cover every weave, class interactions, card conservation, rewards, saves, responsive browser controls, lethal spell ordering, input, audio transitions and simulation isolation. The agent cannot inspect the true draw order or mutate a live battle while planning.
 
 The separate Monte Carlo experiment contains 60,000 fights with no turn-limit timeouts. Final parameters were frozen before holdout seeds were run. The original exported pack was launched in a separate muted window and its class selection and battle screens were visually checked. PR import validation is recorded in the pull request.
 

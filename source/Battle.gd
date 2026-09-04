@@ -132,10 +132,27 @@ func available_cards():
 		if e != "": cards.append(e)
 	return cards
 
+func is_lethal_spell(s):
+	return s.effect == "damage" and spell_preview(s).amount >= enemy.hp
+
+func castable_spells():
+	var cards = available_cards()
+	var choices = learned.filter(func(s): return cast_allowed(s) and R.can_make(cards,s))
+	choices.sort_custom(func(a,b):
+		var a_lethal = is_lethal_spell(a)
+		var b_lethal = is_lethal_spell(b)
+		if a_lethal != b_lethal: return a_lethal
+		var a_complexity = R.occupied(a.pattern)
+		var b_complexity = R.occupied(b.pattern)
+		if a_complexity != b_complexity: return a_complexity > b_complexity
+		var a_power = spell_preview(a).amount
+		var b_power = spell_preview(b).amount
+		if a_power != b_power: return a_power > b_power
+		return str(a.name).naturalnocasecmp_to(str(b.name)) < 0)
+	return choices
+
 func has_playable_spell():
-	for s in learned:
-		if cast_allowed(s) and R.can_make(available_cards(),s): return true
-	return false
+	return not castable_spells().is_empty()
 
 func cast_player():
 	var s = ready_spell()

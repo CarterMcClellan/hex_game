@@ -39,7 +39,6 @@ var screen = "map"
 var unlocked = 0
 var class_id = ""
 var campaign_deck = {}
-var spell_filter = "all"
 var book_scope = "deck"
 var book_element = ""
 var spell_page = 0
@@ -70,6 +69,7 @@ var sound_on = true
 var audio = AudioStreamPlayer.new()
 var sounds = {}
 var test_mode = false
+var force_command_layout = false
 var screenshot_path = ""
 var last_hover_id = ""
 var save_file = "user://progress.cfg"
@@ -128,6 +128,7 @@ func _ready():
 		if arg.begins_with("--battle="):
 			test_mode = true
 			start_fight(int(arg.trim_prefix("--battle=")))
+		if arg == "--command-layout": force_command_layout = true
 	if not screenshot_path.is_empty(): capture_later()
 	update_music()
 	get_window().title = "The Hex Game"
@@ -177,6 +178,8 @@ func _process(delta):
 	elapsed += delta
 	river_material.set_shader_parameter("flow_time",elapsed)
 	scenery.texture = clearing_art if screen == "battle" else map_art
+	scenery.visible = not uses_command_layout()
+	scenery.size = size
 	if modal == "": update_map_walk(delta)
 	if modal != "":
 		queue_redraw()
@@ -300,6 +303,9 @@ func rock(p,s):
 	line(p+Vector2(1,-35)*s,p+Vector2(-2,9)*s,Color("a39c88"),2)
 
 func draw_map():
+	if uses_command_layout():
+		draw_command_map()
+		return
 	for i in range(5):
 		var p = MAP_NODES[i]
 		var e = R.encounters()[i]
@@ -324,11 +330,47 @@ func draw_map():
 	outline_hex(map_player_position,44,GOLD,3)
 	# A completed tutorial stays on the map; Escape provides the restart action.
 
+func draw_command_map():
+	var view = size
+	var portrait_layout = command_is_portrait()
+	draw_rect(Rect2(Vector2.ZERO,view),Color("f5efe2"))
+	draw_rect(Rect2(0,0,view.x,360 if portrait_layout else 190),INK)
+	text_at("THE HEX GAME",Vector2(60,82 if portrait_layout else 56),48 if portrait_layout else 20,GOLD)
+	text_at("The road to the dragon",Vector2(60,176 if portrait_layout else 119),88 if portrait_layout else 48,PAPER,true)
+	if class_id != "": text_at(R.class_data(class_id).name+"  ·  "+str(unlocked)+" / 5 victories",Vector2(60,252 if portrait_layout else 157),50 if portrait_layout else 18,Color("c7e0d7"))
+	draw_command_button(Rect2(view.x-(250 if portrait_layout else 148),62 if portrait_layout else 48,190 if portrait_layout else 100,98 if portrait_layout else 58),"Menu","settings",false,true,50 if portrait_layout else 20)
+	if unlocked >= 5:
+		center_text("The journey is complete.",Rect2(60,440 if portrait_layout else 280,view.x-120,130),64 if portrait_layout else 38,INK,true)
+		return
+	var gap = 34.0 if portrait_layout else 20.0
+	var side = 60.0 if portrait_layout else 48.0
+	var top = 430.0 if portrait_layout else 265.0
+	var columns = 1 if portrait_layout else 5
+	var card_width = (view.x-side*2-gap*(columns-1))/columns
+	var card_height = 310.0 if portrait_layout else 330.0
+	for i in range(5):
+		var encounter = R.encounters()[i]
+		var current = i == unlocked
+		var done = i < unlocked
+		var rect = Rect2(side+(i%columns)*(card_width+gap),top+int(i/columns)*(card_height+gap),card_width,card_height)
+		panel(rect,Color("fffdf6") if current else Color("e9e3d5"),GOLD if current else LINE,18)
+		text_at("0"+str(i+1),rect.position+Vector2(34,60),44 if portrait_layout else 18,GOLD if current else MUTE)
+		text_at(encounter.name,rect.position+Vector2(34,134 if portrait_layout else 108),72 if portrait_layout else 30,INK if i<=unlocked else MUTE,true)
+		if portrait_layout:
+			text_at(encounter.place,rect.position+Vector2(34,188),48,TEAL if current else MUTE)
+			text_at("COMPLETED" if done else ("READY" if current else "LOCKED"),rect.position+Vector2(34,270),48,GREEN if done else (RED if current else MUTE))
+		else:
+			center_text("DONE" if done else ("PLAY" if current else "LOCKED"),Rect2(rect.position+Vector2(20,245),Vector2(rect.size.x-40,50)),18,GREEN if done else (RED if current else MUTE))
+		regions.append({"rect":rect,"id":"fight:"+str(i),"enabled":current})
+
 func begin_map_walk(index):
 	if class_id == "":
 		modal="class"
 		return
 	if map_walking or index != unlocked or index >= 5: return
+	if uses_command_layout():
+		start_fight(index)
+		return
 	map_walk_points = PackedVector2Array([map_player_position])
 	# The one river crossing follows the actual illustrated bridge.
 	if index == 2:
@@ -384,7 +426,130 @@ func actor_tile(id,center,actor,who,casts_left,capacity,mood):
 	var width = sqrt(3)*BOARD_RADIUS+8
 	hp_bar(actor,Rect2(center.x-width/2,center.y+BOARD_RADIUS+2,width,29),who)
 
+func uses_command_layout():
+	return OS.has_feature("web") or force_command_layout
+
+func command_is_portrait():
+	var view = size
+	return view.y > view.x*1.05
+
+func spells_per_page():
+	if not uses_command_layout(): return 9
+	if not command_is_portrait(): return 6
+	var usable_height = size.y-870.0
+	return clampi(int(usable_height/255.0),4,9)
+
+func command_status_text():
+	if class_id == "tide": return "TIDE %d / 3" % battle.tide
+	if class_id == "pyro": return "HEAT %d / 6" % battle.heat
+	return "BLOOD PRICE"
+
+func draw_command_button(rect,label,id,primary,enabled,px):
+	button(rect,"",id,primary,enabled)
+	center_text(label,rect,px,PAPER if primary and enabled else (INK if enabled else MUTE),true)
+
+func draw_command_spell_card(s,rect,index,portrait_layout):
+	var lethal = battle.is_lethal_spell(s)
+	var exact = battle.ready_spell().get("id","") == s.id
+	var hovered = rect.has_point(mouse)
+	if hovered: last_hover_id = s.id
+	var fill = Color("fffdf6")
+	if lethal: fill = Color("fae7df")
+	elif exact or preview_id == s.id: fill = Color("dcece7")
+	panel(rect,fill,GOLD if exact else (RED if lethal else (TEAL if hovered else LINE)),18 if portrait_layout else 13)
+	draw_rect(Rect2(rect.position,Vector2(12 if portrait_layout else 7,rect.size.y)),RED if lethal else spell_color(s))
+	var pad = 46.0 if portrait_layout else 27.0
+	var title_px = 82 if portrait_layout else 31
+	var detail_px = 56 if portrait_layout else 16
+	var meta_px = 50 if portrait_layout else 14
+	text_at(s.name,rect.position+Vector2(pad,76 if portrait_layout else 44),title_px,INK,true)
+	text_at(battle.spell_text(s),rect.position+Vector2(pad,139 if portrait_layout else 72),detail_px,MUTE)
+	var rune_count = R.occupied(s.pattern)
+	var meta = ("LETHAL · " if lethal else "")+str(rune_count)+(" RUNE" if rune_count==1 else " RUNES")
+	text_at(meta,rect.position+Vector2(pad,rect.size.y-28 if portrait_layout else rect.size.y-17),meta_px,RED if lethal else TEAL)
+	var badge_size = 82.0 if portrait_layout else 42.0
+	var badge = Rect2(rect.end-Vector2(badge_size+30,badge_size+30),Vector2(badge_size,badge_size))
+	panel(badge,INK,INK,badge_size/2)
+	center_text(str(index+1),badge,48 if portrait_layout else 17,PAPER,true)
+	regions.append({"rect":rect,"id":"recipe:"+s.id,"enabled":battle.phase=="player" and not animation_running})
+
+func draw_command_battle():
+	var view = size
+	var portrait_layout = command_is_portrait()
+	var foe = R.encounters()[battle.stage]
+	draw_rect(Rect2(Vector2.ZERO,view),Color("f5efe2"))
+	last_hover_id = ""
+	var header_height = 390.0 if portrait_layout else 158.0
+	draw_rect(Rect2(0,0,view.x,header_height),INK)
+	if portrait_layout:
+		text_at("ROUND "+str(battle.round_number),Vector2(64,74),52,GOLD)
+		text_at(foe.name,Vector2(64,158),96,PAPER,true)
+		text_at("%d / %d HP" % [battle.enemy.hp,battle.enemy.max_hp],Vector2(64,228),54,Color("f1c3b9"))
+		text_at(R.class_data(class_id).name,Vector2(64,312),58,PAPER,true)
+		text_at("%d / %d HP  ·  %d CAST%s  ·  %s" % [battle.player.hp,battle.player.max_hp,battle.casts,"" if battle.casts==1 else "S",command_status_text()],Vector2(64,370),46,Color("c7e0d7"))
+		draw_command_button(Rect2(view.x-236,58,172,92),"Menu","settings",false,true,48)
+	else:
+		text_at("ROUND "+str(battle.round_number),Vector2(48,45),17,GOLD)
+		text_at(foe.name,Vector2(48,104),47,PAPER,true)
+		text_at("%d / %d HP" % [battle.enemy.hp,battle.enemy.max_hp],Vector2(330,101),20,Color("f1c3b9"))
+		text_at(R.class_data(class_id).name,Vector2(view.x-640,73),29,PAPER,true)
+		text_at("%d / %d HP  ·  %d CAST%s  ·  %s" % [battle.player.hp,battle.player.max_hp,battle.casts,"" if battle.casts==1 else "S",command_status_text()],Vector2(view.x-640,107),16,Color("c7e0d7"))
+		draw_command_button(Rect2(view.x-142,45,94,56),"Menu","settings",false,true,19)
+
+	var visible = visible_spells()
+	var per_page = spells_per_page()
+	spell_page = clampi(spell_page,0,maxi(0,int((visible.size()-1)/per_page)))
+	var page_start = spell_page*per_page
+	var shown = mini(per_page,visible.size()-page_start)
+	var content_top = header_height+(58.0 if portrait_layout else 31.0)
+	var action_height = 330.0 if portrait_layout else 160.0
+	var content_bottom = view.y-action_height
+	if portrait_layout:
+		text_at("CASTABLE SPELLS",Vector2(64,content_top),52,TEAL)
+		content_top += 54
+	else:
+		text_at("Castable spells",Vector2(48,content_top+29),27,INK,true)
+		text_at("Strongest patterns first",Vector2(244,content_top+28),14,MUTE)
+		content_top += 48
+
+	if visible.is_empty():
+		center_text("No spells available",Rect2(48,content_top,view.x-96,180 if portrait_layout else 100),66 if portrait_layout else 32,INK,true)
+		center_text("End your turn to draw again.",Rect2(48,content_top+(150 if portrait_layout else 82),view.x-96,80),50 if portrait_layout else 16,MUTE)
+	else:
+		var columns = 1 if portrait_layout else 2
+		var rows = int(ceil(float(shown)/columns))
+		var gap = 28.0 if portrait_layout else 18.0
+		var side = 54.0 if portrait_layout else 48.0
+		var card_width = (view.x-side*2-gap*(columns-1))/columns
+		var card_height = (content_bottom-content_top-gap*maxi(0,rows-1))/maxi(rows,1)
+		card_height = minf(card_height,255.0 if portrait_layout else 162.0)
+		for i in range(shown):
+			var column = i%columns
+			var row_index = int(i/columns)
+			var rect = Rect2(side+column*(card_width+gap),content_top+row_index*(card_height+gap),card_width,card_height)
+			draw_command_spell_card(visible[page_start+i],rect,i,portrait_layout)
+
+	var footer_top = view.y-action_height+24
+	var pages = maxi(1,int(ceil(float(visible.size())/per_page)))
+	if pages > 1:
+		var pager_height = 92.0 if portrait_layout else 42.0
+		draw_command_button(Rect2(54,footer_top,150 if portrait_layout else 56,pager_height),"‹","spells_prev",false,spell_page>0,48 if portrait_layout else 22)
+		center_text("%d / %d" % [spell_page+1,pages],Rect2(view.x/2-150,footer_top,300,pager_height),48 if portrait_layout else 15,MUTE)
+		draw_command_button(Rect2(view.x-(204 if portrait_layout else 110),footer_top,150 if portrait_layout else 56,pager_height),"›","spells_next",false,(spell_page+1)*per_page<visible.size(),48 if portrait_layout else 22)
+		footer_top += pager_height+(24 if portrait_layout else 10)
+	var ready = battle.ready_spell()
+	var cast_label = "Cast" if ready.is_empty() else "Cast "+ready.name
+	var button_height = 142.0 if portrait_layout else 62.0
+	var gap = 24.0 if portrait_layout else 14.0
+	var side = 54.0 if portrait_layout else 48.0
+	var end_width = 300.0 if portrait_layout else 210.0
+	draw_command_button(Rect2(side,footer_top,view.x-side*2-end_width-gap,button_height),cast_label,"cast",true,battle.cast_allowed(ready) and not animation_running,64 if portrait_layout else 29)
+	draw_command_button(Rect2(view.x-side-end_width,footer_top,end_width,button_height),"End turn","end",false,battle.phase=="player" and not animation_running,58 if portrait_layout else 25)
+
 func draw_battle():
+	if uses_command_layout():
+		draw_command_battle()
+		return
 	var foe = R.encounters()[battle.stage]
 	var player_turn = battle.phase == "player"
 	var points = board_centers()
@@ -458,12 +623,7 @@ func mini_pattern(pattern,origin,radius=8.0):
 
 func visible_spells():
 	if battle==null: return []
-	var cards=battle.available_cards()
-	return battle.learned.filter(func(recipe):
-		if spell_filter=="ready": return battle.cast_allowed(recipe) and R.can_make(cards,recipe)
-		if spell_filter=="match": return not R.best_fit(battle.board,recipe).is_empty()
-		if spell_filter=="weaves": return recipe.get("weave",false)
-		return true)
+	return battle.castable_spells()
 
 func book_spells():
 	var recipes=R.rune_catalog(class_id) if book_scope=="all" else R.player_spells(class_id,campaign_deck)
@@ -472,32 +632,32 @@ func book_spells():
 
 func draw_spell_panel():
 	panel(Rect2(1005,57,401,797),PAPER,INK,15)
-	text_at("Known spells",Vector2(1031,106),35,INK,true)
+	text_at("Castable spells",Vector2(1031,106),35,INK,true)
 	line(Vector2(1029,129),Vector2(1382,129),LINE,2)
 	last_hover_id = ""
-	var cards = battle.available_cards()
 	var visible=visible_spells()
-	var filters=[["all","All"],["ready","Ready"],["match","Match"],["weaves","Weaves"]]
-	for i in range(filters.size()): button(Rect2(1027+i*89,134,83,27),filters[i][1],"filter:"+filters[i][0],spell_filter==filters[i][0])
-	spell_page=clampi(spell_page,0,maxi(0,int((visible.size()-1)/9)))
-	for i in range(mini(9,visible.size()-spell_page*9)):
-		var s=visible[i+spell_page*9]
-		var row=Rect2(1024,173+i*53,362,49)
+	var per_page = spells_per_page()
+	spell_page=clampi(spell_page,0,maxi(0,int((visible.size()-1)/per_page)))
+	for i in range(mini(per_page,visible.size()-spell_page*per_page)):
+		var s=visible[i+spell_page*per_page]
+		var row=Rect2(1024,143+i*56,362,52)
 		var exact=battle.ready_spell().get("id","")==s.id
-		var available=R.can_make(cards,s) and battle.cast_allowed(s)
 		var selected=preview_id==s.id or row.has_point(mouse)
 		if row.has_point(mouse): last_hover_id=s.id
-		if selected or exact: panel(row,Color("dbe7df"),GOLD if exact else Color.TRANSPARENT,8)
+		var lethal=battle.is_lethal_spell(s)
+		if selected or exact or lethal: panel(row,Color("fae7df") if lethal else Color("dbe7df"),GOLD if exact else (RED if lethal else Color.TRANSPARENT),8)
 		mini_pattern(s.pattern,Vector2(1056,row.get_center().y),7.8)
-		text_at(s.name,Vector2(1093,row.get_center().y-1),24,INK if available else MUTE,true)
+		text_at(s.name,Vector2(1093,row.get_center().y-2),23,INK,true)
 		text_at(battle.spell_text(s),Vector2(1094,row.get_center().y+18),11,MUTE)
-		panel(Rect2(1346,row.get_center().y-15,27,30),TEAL if available else Color("e4decd"),Color.TRANSPARENT,5)
-		center_text(str(i+1),Rect2(1346,row.get_center().y-15,27,30),14,PAPER if available else MUTE)
+		panel(Rect2(1346,row.get_center().y-15,27,30),RED if lethal else TEAL,Color.TRANSPARENT,5)
+		center_text(str(i+1),Rect2(1346,row.get_center().y-15,27,30),14,PAPER)
 		regions.append({"rect":row,"id":"recipe:"+s.id,"enabled":battle.phase=="player" and not animation_running})
-	if visible.is_empty(): center_text("No matching spells",Rect2(1030,210,352,40),21,MUTE,true)
+	if visible.is_empty():
+		center_text("No spells available",Rect2(1030,210,352,40),21,MUTE,true)
+		center_text("End your turn to draw again.",Rect2(1030,252,352,28),12,MUTE)
 	button(Rect2(1030,664,42,30),"‹","spells_prev",false,spell_page>0)
-	center_text("%d spells · %d / %d" % [visible.size(),spell_page+1,maxi(1,int(ceil(visible.size()/9.0)))],Rect2(1080,664,235,30),12,MUTE)
-	button(Rect2(1340,664,42,30),"›","spells_next",false,(spell_page+1)*9<visible.size())
+	center_text("%d spells · %d / %d" % [visible.size(),spell_page+1,maxi(1,int(ceil(float(visible.size())/per_page)))],Rect2(1080,664,235,30),12,MUTE)
+	button(Rect2(1340,664,42,30),"›","spells_next",false,(spell_page+1)*per_page<visible.size())
 
 	line(Vector2(1029,704),Vector2(1382,704),LINE,2)
 	battle_button(Rect2(1026,719,358,53),"Cast","Enter","cast",true,battle.cast_allowed(battle.ready_spell()) and not animation_running)
@@ -581,7 +741,6 @@ func draw_drag():
 	if e != "": token(e,mouse,43,0.9)
 
 func start_fight(index):
-	spell_filter="all"
 	if class_id == "":
 		modal="class"
 		return
@@ -738,10 +897,7 @@ func activate(id):
 	elif id.begins_with("gem:"): accept_victory(id.trim_prefix("gem:"))
 	elif id == "deck": modal="deck"
 	elif id == "spells_prev": spell_page=maxi(0,spell_page-1)
-	elif id == "spells_next": spell_page=mini(int((visible_spells().size()-1)/9),spell_page+1)
-	elif id.begins_with("filter:"):
-		spell_filter=id.trim_prefix("filter:")
-		spell_page=0
+	elif id == "spells_next": spell_page=mini(maxi(0,int((visible_spells().size()-1)/spells_per_page())),spell_page+1)
 	elif id.begins_with("book_scope:"):
 		book_scope=id.trim_prefix("book_scope:")
 		book_page=0
@@ -802,11 +958,13 @@ func _input(event):
 			return
 		if screen=="battle" and battle.phase=="player" and not animation_running:
 			if event.keycode in [KEY_UP,KEY_DOWN]:
+				var visible=visible_spells()
+				if visible.is_empty(): return
 				var index = -1
-				for i in range(battle.learned.size()):
-					if battle.learned[i].id == preview_id: index = i
-				index = posmod(index+(1 if event.keycode==KEY_DOWN else -1),battle.learned.size())
-				fill_spell(battle.learned[index].id)
+				for i in range(visible.size()):
+					if visible[i].id == preview_id: index = i
+				index = posmod(index+(1 if event.keycode==KEY_DOWN else -1),visible.size())
+				fill_spell(visible[index].id)
 			if event.keycode in [KEY_ENTER,KEY_KP_ENTER,KEY_SPACE]: cast_action()
 			if event.keycode==KEY_E: run_enemy_turn()
 			if event.keycode in [KEY_BACKSPACE,KEY_DELETE]: activate("clear")
@@ -814,7 +972,8 @@ func _input(event):
 			if event.keycode>=KEY_1 and event.keycode<=KEY_9:
 				var i = event.keycode-KEY_1
 				var visible=visible_spells()
-				if i+spell_page*9 < visible.size(): fill_spell(visible[i+spell_page*9].id)
+				var index=i+spell_page*spells_per_page()
+				if index < visible.size(): fill_spell(visible[index].id)
 	if not event is InputEventMouseButton: return
 	var pos = make_input_local(event).position
 	if event.button_index==MOUSE_BUTTON_RIGHT and event.pressed:
@@ -830,6 +989,7 @@ func _input(event):
 				activate(region.id)
 				return
 		if modal == "settings":
+			if uses_command_layout() and command_is_portrait(): return
 			if not SETTINGS_RECT.has_point(pos): modal = ""
 			return
 		if modal != "" or screen != "battle" or battle.phase != "player" or battle.casts<=0 or animation_running: return
@@ -884,9 +1044,72 @@ func spellbook_effect(s):
 	if s.get("leech",0)>0: label+=" · Steal "+("all" if s.leech==1.0 else "half")
 	return label
 
+func draw_portrait_modal():
+	var view = size
+	draw_rect(Rect2(Vector2.ZERO,view),Color("f5efe2"))
+	if modal == "class":
+		text_at("CHOOSE YOUR CLASS",Vector2(60,100),52,TEAL)
+		text_at("How will you fight?",Vector2(60,205),92,INK,true)
+		var top = 300.0
+		var gap = 34.0
+		var card_height = minf(720.0,(view.y-top-120-gap*2)/3.0)
+		for i in range(3):
+			var c=R.classes()[i]
+			var rect=Rect2(54,top+i*(card_height+gap),view.x-108,card_height)
+			panel(rect,Color("fffdf6"),GOLD if i==0 else LINE,20)
+			draw_rect(Rect2(rect.position,Vector2(16,rect.size.y)),R.COLORS[c.elements[0]])
+			text_at(c.name,rect.position+Vector2(58,105),88,INK,true)
+			text_at(c.role,rect.position+Vector2(58,172),56,TEAL)
+			text_at(str(c.hp)+" HP  ·  "+R.NAMES[c.elements[0]]+" + "+R.NAMES[c.elements[1]],rect.position+Vector2(58,242),50,MUTE)
+			for n in range(3): text_at(c.lines[n],rect.position+Vector2(58,322+n*58),50,INK)
+			draw_command_button(Rect2(rect.position+Vector2(58,rect.size.y-150),Vector2(rect.size.x-116,106)),"Choose "+c.name,"class:"+c.id,true,true,56)
+		return true
+	if modal == "settings":
+		var rect=Rect2(54,360,view.x-108,minf(1260,view.y-720))
+		panel(rect,PAPER,GOLD,24)
+		text_at("Menu",rect.position+Vector2(64,126),86,INK,true)
+		var y=190.0
+		var button_height=128.0
+		for item in [["Music  ·  "+("On" if music_on else "Off"),"music"],["Sound effects  ·  "+("On" if sound_on else "Off"),"sound"],["Return to journey","map"],["Begin a new journey","reset"]]:
+			draw_command_button(Rect2(rect.position+Vector2(54,y),Vector2(rect.size.x-108,button_height)),item[0],item[1],false,true,44)
+			y+=button_height+28
+		draw_command_button(Rect2(rect.position+Vector2(54,y+24),Vector2(rect.size.x-108,142)),"Done","close",true,true,54)
+		return true
+	if modal == "victory":
+		text_at("VICTORY",Vector2(60,104),42,GREEN)
+		text_at(R.encounters()[battle.stage].name+" defeated",Vector2(60,210),82,INK,true)
+		text_at("Choose one gem for your deck",Vector2(60,292),40,MUTE)
+		var choices=R.encounters()[battle.stage].deck.keys()
+		var gap=32.0
+		var card_width=(view.x-120-gap*maxi(0,choices.size()-1))/maxi(1,choices.size())
+		for i in range(choices.size()):
+			var e=choices[i]
+			var rect=Rect2(60+i*(card_width+gap),390,card_width,570)
+			panel(rect,Color("fffdf6"),LINE,20)
+			draw_rect(Rect2(rect.position,Vector2(rect.size.x,18)),R.COLORS[e])
+			center_text(R.NAMES[e],Rect2(rect.position+Vector2(20,92),Vector2(rect.size.x-40,100)),62,INK,true)
+			var new_patterns=R.reward_spells(class_id,campaign_deck,e,mini(4,battle.stage+1))
+			center_text("+%d new spells" % new_patterns.size(),Rect2(rect.position+Vector2(20,218),Vector2(rect.size.x-40,70)),34,TEAL)
+			draw_command_button(Rect2(rect.position+Vector2(34,388),Vector2(rect.size.x-68,120)),"Add "+R.NAMES[e],"gem:"+e,true,true,42)
+		draw_command_button(Rect2(60,1040,view.x-120,136),"Skip gem & continue","reward",false,true,46)
+		return true
+	if modal == "defeat":
+		center_text("The circle falls quiet",Rect2(60,520,view.x-120,140),82,INK,true)
+		center_text("Your class and deck are safe.",Rect2(60,690,view.x-120,70),40,MUTE)
+		draw_command_button(Rect2(60,840,view.x-120,150),"Try again","retry",true,true,58)
+		return true
+	if modal == "reset":
+		center_text("Begin again?",Rect2(60,520,view.x-120,140),86,INK,true)
+		center_text("Choose a new class and starting deck.",Rect2(60,680,view.x-120,70),38,MUTE)
+		draw_command_button(Rect2(60,830,(view.x-150)/2,140),"Keep journey","close",false,true,44)
+		draw_command_button(Rect2(90+(view.x-150)/2,830,(view.x-150)/2,140),"Start fresh","confirm_reset",true,true,44)
+		return true
+	return false
+
 func draw_modal():
 	regions.clear()
-	draw_rect(Rect2(0,0,1440,900),Color(0.08,0.16,0.17,0.72))
+	if uses_command_layout() and command_is_portrait() and draw_portrait_modal(): return
+	draw_rect(Rect2(Vector2.ZERO,size),Color(0.08,0.16,0.17,0.72))
 	if modal == "class":
 		panel(Rect2(144,140,1152,615),PAPER,GOLD,18)
 		center_text("Choose your class",Rect2(220,164,1000,62),46,INK,true)
@@ -967,7 +1190,7 @@ func draw_modal():
 		text_at("A little guide to spellcraft",Vector2(400,186),43,INK,true)
 		var rows = [
 			["1", "Draw five. Keep what you do not cast.", "Only spent gems go to the discard pile."],
-			["2", "Choose a spell. Watch the gems settle.", "Click its row or press 1–9. Enter casts. You can also drag cards."],
+			["2", "Choose from the spells you can cast.", "Big patterns lead the list. A finishing blow comes first."],
 			["3", "Work through your deck.", "Only an empty draw pile triggers a discard reshuffle."],
 			["4", "Mix attacks, healing, and fresh cards.", "Pulse spends both casts. Drawing first can build a stronger finish."],
 			["5", "Choose your rewards.", "After each victory, add one enemy gem or skip it."]
@@ -1068,10 +1291,7 @@ func fill_spell(id):
 	for s in battle.learned:
 		if s.id != id: continue
 		var visible=visible_spells()
-		if not visible.has(s):
-			spell_filter="all"
-			visible=visible_spells()
-		spell_page=int(visible.find(s)/9)
+		if visible.has(s): spell_page=int(visible.find(s)/spells_per_page())
 		hand_offset=0
 		if battle.arrange(s):
 			for i in range(7):
