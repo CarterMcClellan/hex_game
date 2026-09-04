@@ -1,0 +1,14 @@
+* text=auto
+*.gd text eol=lf
+*.gdshader text eol=lf
+*.py text eol=lf
+*.png binary
+*.wav binary
+*.ttf binary
+
+# Preserve generated graphics and upstream license text verbatim.
+*.svg -whitespace
+source/assets/*LICENSE.txt -whitespace
+analysis/*/battles.csv linguist-generated=true
+analysis/*/summary.json linguist-generated=true
+analysis/*.svg linguist-generated=true

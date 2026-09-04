@@ -1,0 +1,354 @@
+[
+  {
+    "run": "mc-baseline",
+    "options": {
+      "classes": "tide,pyro,night",
+      "hp": "",
+      "n": "30",
+      "out": "work/mc-baseline",
+      "policies": "planner,greedy,random",
+      "primary": "",
+      "rewards": "skip,random",
+      "seed": "0"
+    },
+    "cases": 2700,
+    "campaigns": {
+      "night|greedy|random|campaign": {
+        "n": 30,
+        "wins": 30
+      },
+      "night|greedy|skip|campaign": {
+        "n": 30,
+        "wins": 30
+      },
+      "night|planner|random|campaign": {
+        "n": 30,
+        "wins": 30
+      },
+      "night|planner|skip|campaign": {
+        "n": 30,
+        "wins": 30
+      },
+      "night|random|random|campaign": {
+        "n": 30,
+        "wins": 14
+      },
+      "night|random|skip|campaign": {
+        "n": 30,
+        "wins": 11
+      },
+      "pyro|greedy|random|campaign": {
+        "n": 30,
+        "wins": 30
+      },
+      "pyro|greedy|skip|campaign": {
+        "n": 30,
+        "wins": 30
+      },
+      "pyro|planner|random|campaign": {
+        "n": 30,
+        "wins": 29
+      },
+      "pyro|planner|skip|campaign": {
+        "n": 30,
+        "wins": 26
+      },
+      "pyro|random|random|campaign": {
+        "n": 30,
+        "wins": 1
+      },
+      "pyro|random|skip|campaign": {
+        "n": 30,
+        "wins": 2
+      },
+      "tide|greedy|random|campaign": {
+        "n": 30,
+        "wins": 30
+      },
+      "tide|greedy|skip|campaign": {
+        "n": 30,
+        "wins": 30
+      },
+      "tide|planner|random|campaign": {
+        "n": 30,
+        "wins": 30
+      },
+      "tide|planner|skip|campaign": {
+        "n": 30,
+        "wins": 30
+      },
+      "tide|random|random|campaign": {
+        "n": 30,
+        "wins": 7
+      },
+      "tide|random|skip|campaign": {
+        "n": 30,
+        "wins": 2
+      }
+    }
+  },
+  {
+    "run": "mc-tune-night",
+    "options": {
+      "classes": "night",
+      "hp": "32",
+      "n": "60",
+      "out": "work/mc-tune-night",
+      "policies": "planner,greedy",
+      "primary": "8",
+      "rewards": "skip,random",
+      "seed": "200"
+    },
+    "cases": 1200,
+    "campaigns": {
+      "night|greedy|random|campaign": {
+        "n": 60,
+        "wins": 58
+      },
+      "night|greedy|skip|campaign": {
+        "n": 60,
+        "wins": 60
+      },
+      "night|planner|random|campaign": {
+        "n": 60,
+        "wins": 60
+      },
+      "night|planner|skip|campaign": {
+        "n": 60,
+        "wins": 59
+      }
+    }
+  },
+  {
+    "run": "mc-tune-night-20",
+    "options": {
+      "classes": "night",
+      "hp": "20",
+      "n": "100",
+      "out": "work/mc-tune-night-20",
+      "policies": "planner",
+      "primary": "8",
+      "rewards": "skip,random",
+      "seed": "400"
+    },
+    "cases": 1000,
+    "campaigns": {
+      "night|planner|random|campaign": {
+        "n": 100,
+        "wins": 75
+      },
+      "night|planner|skip|campaign": {
+        "n": 100,
+        "wins": 75
+      }
+    }
+  },
+  {
+    "run": "mc-tune-night-22",
+    "options": {
+      "classes": "night",
+      "hp": "22",
+      "n": "100",
+      "out": "work/mc-tune-night-22",
+      "policies": "planner",
+      "primary": "8",
+      "rewards": "skip,random",
+      "seed": "400"
+    },
+    "cases": 1000,
+    "campaigns": {
+      "night|planner|random|campaign": {
+        "n": 100,
+        "wins": 82
+      },
+      "night|planner|skip|campaign": {
+        "n": 100,
+        "wins": 82
+      }
+    }
+  },
+  {
+    "run": "mc-tune-night-26",
+    "options": {
+      "classes": "night",
+      "hp": "26",
+      "n": "100",
+      "out": "work/mc-tune-night-26",
+      "policies": "planner,greedy",
+      "primary": "8",
+      "rewards": "skip,random",
+      "seed": "200"
+    },
+    "cases": 2000,
+    "campaigns": {
+      "night|greedy|random|campaign": {
+        "n": 100,
+        "wins": 93
+      },
+      "night|greedy|skip|campaign": {
+        "n": 100,
+        "wins": 91
+      },
+      "night|planner|random|campaign": {
+        "n": 100,
+        "wins": 98
+      },
+      "night|planner|skip|campaign": {
+        "n": 100,
+        "wins": 96
+      }
+    }
+  },
+  {
+    "run": "mc-tune-pyro",
+    "options": {
+      "classes": "pyro",
+      "hp": "26",
+      "n": "60",
+      "out": "work/mc-tune-pyro",
+      "policies": "planner,greedy",
+      "primary": "15",
+      "rewards": "skip,random",
+      "seed": "200"
+    },
+    "cases": 1200,
+    "campaigns": {
+      "pyro|greedy|random|campaign": {
+        "n": 60,
+        "wins": 34
+      },
+      "pyro|greedy|skip|campaign": {
+        "n": 60,
+        "wins": 24
+      },
+      "pyro|planner|random|campaign": {
+        "n": 60,
+        "wins": 37
+      },
+      "pyro|planner|skip|campaign": {
+        "n": 60,
+        "wins": 10
+      }
+    }
+  },
+  {
+    "run": "mc-tune-pyro-28",
+    "options": {
+      "classes": "pyro",
+      "hp": "28",
+      "n": "100",
+      "out": "work/mc-tune-pyro-28",
+      "policies": "planner",
+      "primary": "14",
+      "rewards": "skip,random",
+      "seed": "400"
+    },
+    "cases": 1000,
+    "campaigns": {
+      "pyro|planner|random|campaign": {
+        "n": 100,
+        "wins": 79
+      },
+      "pyro|planner|skip|campaign": {
+        "n": 100,
+        "wins": 52
+      }
+    }
+  },
+  {
+    "run": "mc-tune-pyro-32",
+    "options": {
+      "classes": "pyro",
+      "hp": "32",
+      "n": "100",
+      "out": "work/mc-tune-pyro-32",
+      "policies": "planner,greedy",
+      "primary": "14",
+      "rewards": "skip,random",
+      "seed": "200"
+    },
+    "cases": 2000,
+    "campaigns": {
+      "pyro|greedy|random|campaign": {
+        "n": 100,
+        "wins": 94
+      },
+      "pyro|greedy|skip|campaign": {
+        "n": 100,
+        "wins": 87
+      },
+      "pyro|planner|random|campaign": {
+        "n": 100,
+        "wins": 98
+      },
+      "pyro|planner|skip|campaign": {
+        "n": 100,
+        "wins": 72
+      }
+    }
+  },
+  {
+    "run": "mc-tune-pyro-34",
+    "options": {
+      "classes": "pyro",
+      "hp": "34",
+      "n": "100",
+      "out": "work/mc-tune-pyro-34",
+      "policies": "planner,greedy",
+      "primary": "15",
+      "rewards": "skip,random",
+      "seed": "200"
+    },
+    "cases": 2000,
+    "campaigns": {
+      "pyro|greedy|random|campaign": {
+        "n": 100,
+        "wins": 97
+      },
+      "pyro|greedy|skip|campaign": {
+        "n": 100,
+        "wins": 91
+      },
+      "pyro|planner|random|campaign": {
+        "n": 100,
+        "wins": 100
+      },
+      "pyro|planner|skip|campaign": {
+        "n": 100,
+        "wins": 78
+      }
+    }
+  },
+  {
+    "run": "mc-tune-tide",
+    "options": {
+      "classes": "tide",
+      "hp": "30",
+      "n": "60",
+      "out": "work/mc-tune-tide",
+      "policies": "planner,greedy",
+      "primary": "9",
+      "rewards": "skip,random",
+      "seed": "200"
+    },
+    "cases": 1200,
+    "campaigns": {
+      "tide|greedy|random|campaign": {
+        "n": 60,
+        "wins": 52
+      },
+      "tide|greedy|skip|campaign": {
+        "n": 60,
+        "wins": 40
+      },
+      "tide|planner|random|campaign": {
+        "n": 60,
+        "wins": 59
+      },
+      "tide|planner|skip|campaign": {
+        "n": 60,
+        "wins": 58
+      }
+    }
+  }
+]

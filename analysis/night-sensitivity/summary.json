@@ -1,0 +1,603 @@
+{
+  "cases": 10000,
+  "class_definitions": [
+    {
+      "deck": {
+        "L": 11,
+        "W": 9
+      },
+      "elements": [
+        "W",
+        "L"
+      ],
+      "hp": 30,
+      "id": "tide",
+      "lines": [
+        "Water builds Tide, up to 3.",
+        "Light spends Tide to boost its spell.",
+        "Each Tide: +2 power or +1 draw."
+      ],
+      "name": "Tidecaller",
+      "role": "Patient combination caster",
+      "trait": "Ebb & Flow"
+    },
+    {
+      "deck": {
+        "A": 6,
+        "F": 14
+      },
+      "elements": [
+        "F",
+        "A"
+      ],
+      "hp": 28,
+      "id": "pyro",
+      "lines": [
+        "Fire gains +1 Heat and hits harder.",
+        "At 4+ Heat, Fire costs 2 HP.",
+        "Air vents Heat into healing."
+      ],
+      "name": "Pyromancer",
+      "role": "A volatile damage engine",
+      "trait": "Heat"
+    },
+    {
+      "deck": {
+        "B": 12,
+        "D": 8
+      },
+      "elements": [
+        "D",
+        "B"
+      ],
+      "hp": 22,
+      "id": "night",
+      "lines": [
+        "Blood spends HP for stronger spells.",
+        "Dark attacks steal half their damage.",
+        "Soul Feast steals all of its damage."
+      ],
+      "name": "Nightbinder",
+      "role": "Life is a resource",
+      "trait": "Blood Price"
+    }
+  ],
+  "elapsed_seconds": 27.782,
+  "encounters": [
+    {
+      "casts": 1,
+      "deck": {
+        "B": 8,
+        "D": 12
+      },
+      "flavor": "A flutter in the dusk. Your first spell awaits.",
+      "hp": 18,
+      "intent": "Small attacks \u00b7 one cast",
+      "lesson": "A small beginning",
+      "name": "Bat",
+      "place": "THE HOLLOW",
+      "portrait": "bat",
+      "reward": "bolt"
+    },
+    {
+      "casts": 1,
+      "deck": {
+        "D": 8,
+        "E": 12
+      },
+      "flavor": "A crooked grin, and a pocket full of stones.",
+      "hp": 28,
+      "intent": "Stronger patterns \u00b7 one cast",
+      "lesson": "Find the stronger pattern",
+      "name": "Goblin",
+      "place": "MOSSWOOD",
+      "portrait": "goblin",
+      "reward": "ward"
+    },
+    {
+      "casts": 1,
+      "deck": {
+        "B": 4,
+        "E": 16
+      },
+      "flavor": "Heavy hands. Stubborn roots. Pick your moment.",
+      "hp": 42,
+      "intent": "Heavy hits \u00b7 can regenerate once",
+      "lesson": "Know when to recover",
+      "name": "Troll",
+      "place": "THE OLD CROSSING",
+      "portrait": "troll",
+      "reward": "study"
+    },
+    {
+      "casts": 2,
+      "deck": {
+        "B": 8,
+        "D": 12
+      },
+      "flavor": "An old scholar with a dangerous second thought.",
+      "hp": 52,
+      "intent": "Draws and combines \u00b7 two casts",
+      "lesson": "Make your two casts count",
+      "name": "Necromancer",
+      "place": "QUIET GRAVES",
+      "portrait": "necromancer",
+      "reward": "dawn"
+    },
+    {
+      "casts": 2,
+      "deck": {
+        "A": 4,
+        "E": 6,
+        "F": 10
+      },
+      "flavor": "Every pattern you have learned leads here.",
+      "hp": 66,
+      "intent": "Three elements \u00b7 two casts",
+      "lesson": "Bring the whole spellbook",
+      "name": "Dragon",
+      "place": "THE EMBER DEN",
+      "portrait": "dragon",
+      "reward": ""
+    }
+  ],
+  "options": {
+    "classes": "night",
+    "hp": "",
+    "n": "500",
+    "out": "analysis/night-sensitivity",
+    "policies": "greedy,random",
+    "primary": "",
+    "rewards": "skip,random",
+    "seed": "10000"
+  },
+  "policy_version": "hidden-order-invariant-v2",
+  "summaries": {
+    "night|greedy|random|0": {
+      "casts": 1500,
+      "drawn": 0,
+      "healed": 912,
+      "hp": 10245,
+      "n": 500,
+      "spent": 1173,
+      "turns": 1000,
+      "wins": 500
+    },
+    "night|greedy|random|1": {
+      "casts": 1565,
+      "drawn": 0,
+      "healed": 1398,
+      "hp": 5118,
+      "n": 500,
+      "spent": 3859,
+      "turns": 1010,
+      "wins": 500
+    },
+    "night|greedy|random|2": {
+      "casts": 3161,
+      "drawn": 0,
+      "healed": 6521,
+      "hp": 7207,
+      "n": 500,
+      "spent": 4497,
+      "turns": 1706,
+      "wins": 498
+    },
+    "night|greedy|random|3": {
+      "casts": 3929,
+      "drawn": 0,
+      "healed": 11141,
+      "hp": 6338,
+      "n": 500,
+      "spent": 3715,
+      "turns": 2168,
+      "wins": 494
+    },
+    "night|greedy|random|4": {
+      "casts": 3827,
+      "drawn": 0,
+      "healed": 13091,
+      "hp": 4208,
+      "n": 500,
+      "spent": 2854,
+      "turns": 2280,
+      "wins": 377
+    },
+    "night|greedy|random|campaign": {
+      "n": 500,
+      "wins": 370
+    },
+    "night|greedy|skip|0": {
+      "casts": 1500,
+      "drawn": 0,
+      "healed": 912,
+      "hp": 10245,
+      "n": 500,
+      "spent": 1173,
+      "turns": 1000,
+      "wins": 500
+    },
+    "night|greedy|skip|1": {
+      "casts": 1550,
+      "drawn": 0,
+      "healed": 1326,
+      "hp": 4990,
+      "n": 500,
+      "spent": 3915,
+      "turns": 1009,
+      "wins": 500
+    },
+    "night|greedy|skip|2": {
+      "casts": 3171,
+      "drawn": 0,
+      "healed": 6618,
+      "hp": 6798,
+      "n": 500,
+      "spent": 4923,
+      "turns": 1708,
+      "wins": 494
+    },
+    "night|greedy|skip|3": {
+      "casts": 4124,
+      "drawn": 0,
+      "healed": 11934,
+      "hp": 5071,
+      "n": 500,
+      "spent": 4197,
+      "turns": 2300,
+      "wins": 486
+    },
+    "night|greedy|skip|4": {
+      "casts": 3859,
+      "drawn": 0,
+      "healed": 13462,
+      "hp": 3692,
+      "n": 500,
+      "spent": 2773,
+      "turns": 2325,
+      "wins": 341
+    },
+    "night|greedy|skip|campaign": {
+      "n": 500,
+      "wins": 327
+    },
+    "night|random|random|0": {
+      "casts": 2132,
+      "drawn": 1320,
+      "healed": 1710,
+      "hp": 8968,
+      "n": 500,
+      "spent": 2136,
+      "turns": 1249,
+      "wins": 500
+    },
+    "night|random|random|1": {
+      "casts": 2486,
+      "drawn": 1232,
+      "healed": 2337,
+      "hp": 3467,
+      "n": 500,
+      "spent": 3231,
+      "turns": 1412,
+      "wins": 415
+    },
+    "night|random|random|2": {
+      "casts": 3538,
+      "drawn": 1512,
+      "healed": 5353,
+      "hp": 2255,
+      "n": 500,
+      "spent": 3870,
+      "turns": 1927,
+      "wins": 253
+    },
+    "night|random|random|3": {
+      "casts": 3268,
+      "drawn": 1898,
+      "healed": 5260,
+      "hp": 293,
+      "n": 500,
+      "spent": 3821,
+      "turns": 1735,
+      "wins": 46
+    },
+    "night|random|random|4": {
+      "casts": 2737,
+      "drawn": 1488,
+      "healed": 4493,
+      "hp": 87,
+      "n": 500,
+      "spent": 3154,
+      "turns": 1464,
+      "wins": 13
+    },
+    "night|random|random|campaign": {
+      "n": 500,
+      "wins": 0
+    },
+    "night|random|skip|0": {
+      "casts": 2132,
+      "drawn": 1320,
+      "healed": 1710,
+      "hp": 8968,
+      "n": 500,
+      "spent": 2136,
+      "turns": 1249,
+      "wins": 500
+    },
+    "night|random|skip|1": {
+      "casts": 2479,
+      "drawn": 1216,
+      "healed": 2353,
+      "hp": 3510,
+      "n": 500,
+      "spent": 3260,
+      "turns": 1410,
+      "wins": 421
+    },
+    "night|random|skip|2": {
+      "casts": 3395,
+      "drawn": 1440,
+      "healed": 4861,
+      "hp": 2057,
+      "n": 500,
+      "spent": 3998,
+      "turns": 1854,
+      "wins": 237
+    },
+    "night|random|skip|3": {
+      "casts": 3209,
+      "drawn": 1944,
+      "healed": 5158,
+      "hp": 291,
+      "n": 500,
+      "spent": 3914,
+      "turns": 1705,
+      "wins": 39
+    },
+    "night|random|skip|4": {
+      "casts": 2657,
+      "drawn": 1558,
+      "healed": 4201,
+      "hp": 81,
+      "n": 500,
+      "spent": 3428,
+      "turns": 1425,
+      "wins": 12
+    },
+    "night|random|skip|campaign": {
+      "n": 500,
+      "wins": 1
+    }
+  },
+  "usage": {
+    "night|greedy|random|bolt": {
+      "casts": 2115,
+      "name": "Heartseeker"
+    },
+    "night|greedy|random|dawn": {
+      "casts": 647,
+      "name": "Eclipse"
+    },
+    "night|greedy|random|gem_E": {
+      "casts": 29,
+      "name": "Root"
+    },
+    "night|greedy|random|mend": {
+      "casts": 2516,
+      "name": "Blood Offering"
+    },
+    "night|greedy|random|pulse": {
+      "casts": 205,
+      "name": "Pulse"
+    },
+    "night|greedy|random|shard": {
+      "casts": 196,
+      "name": "Night Fang"
+    },
+    "night|greedy|random|twin": {
+      "casts": 1371,
+      "name": "Siphon"
+    },
+    "night|greedy|random|ward": {
+      "casts": 2685,
+      "name": "Soul Feast"
+    },
+    "night|greedy|random|weave_BE0": {
+      "casts": 43,
+      "name": "Briar Blood"
+    },
+    "night|greedy|random|weave_BE1": {
+      "casts": 74,
+      "name": "Heartwood"
+    },
+    "night|greedy|random|weave_BE2": {
+      "casts": 2,
+      "name": "Thorn Pact"
+    },
+    "night|greedy|random|weave_DB0": {
+      "casts": 2220,
+      "name": "Blood Hex"
+    },
+    "night|greedy|random|weave_DB1": {
+      "casts": 964,
+      "name": "Grave Thirst"
+    },
+    "night|greedy|random|weave_DBE": {
+      "casts": 887,
+      "name": "Gravebloom"
+    },
+    "night|greedy|random|weave_DE0": {
+      "casts": 23,
+      "name": "Grave Root"
+    },
+    "night|greedy|random|weave_DE2": {
+      "casts": 5,
+      "name": "Obsidian Fang"
+    },
+    "night|greedy|skip|bolt": {
+      "casts": 2305,
+      "name": "Heartseeker"
+    },
+    "night|greedy|skip|dawn": {
+      "casts": 640,
+      "name": "Eclipse"
+    },
+    "night|greedy|skip|mend": {
+      "casts": 2587,
+      "name": "Blood Offering"
+    },
+    "night|greedy|skip|pulse": {
+      "casts": 290,
+      "name": "Pulse"
+    },
+    "night|greedy|skip|shard": {
+      "casts": 262,
+      "name": "Night Fang"
+    },
+    "night|greedy|skip|twin": {
+      "casts": 1458,
+      "name": "Siphon"
+    },
+    "night|greedy|skip|ward": {
+      "casts": 3453,
+      "name": "Soul Feast"
+    },
+    "night|greedy|skip|weave_DB0": {
+      "casts": 2268,
+      "name": "Blood Hex"
+    },
+    "night|greedy|skip|weave_DB1": {
+      "casts": 941,
+      "name": "Grave Thirst"
+    },
+    "night|random|random|bolt": {
+      "casts": 917,
+      "name": "Heartseeker"
+    },
+    "night|random|random|dawn": {
+      "casts": 94,
+      "name": "Eclipse"
+    },
+    "night|random|random|gem_E": {
+      "casts": 187,
+      "name": "Root"
+    },
+    "night|random|random|mend": {
+      "casts": 2436,
+      "name": "Blood Offering"
+    },
+    "night|random|random|pulse": {
+      "casts": 926,
+      "name": "Pulse"
+    },
+    "night|random|random|scry": {
+      "casts": 749,
+      "name": "Forbidden Pact"
+    },
+    "night|random|random|shard": {
+      "casts": 1705,
+      "name": "Night Fang"
+    },
+    "night|random|random|study": {
+      "casts": 209,
+      "name": "Grave Bargain"
+    },
+    "night|random|random|twin": {
+      "casts": 1607,
+      "name": "Siphon"
+    },
+    "night|random|random|ward": {
+      "casts": 856,
+      "name": "Soul Feast"
+    },
+    "night|random|random|weave_BE0": {
+      "casts": 218,
+      "name": "Briar Blood"
+    },
+    "night|random|random|weave_BE1": {
+      "casts": 112,
+      "name": "Heartwood"
+    },
+    "night|random|random|weave_BE2": {
+      "casts": 9,
+      "name": "Thorn Pact"
+    },
+    "night|random|random|weave_DB0": {
+      "casts": 1760,
+      "name": "Blood Hex"
+    },
+    "night|random|random|weave_DB1": {
+      "casts": 1297,
+      "name": "Grave Thirst"
+    },
+    "night|random|random|weave_DB2": {
+      "casts": 745,
+      "name": "Scarlet Pact"
+    },
+    "night|random|random|weave_DBE": {
+      "casts": 134,
+      "name": "Gravebloom"
+    },
+    "night|random|random|weave_DE0": {
+      "casts": 138,
+      "name": "Grave Root"
+    },
+    "night|random|random|weave_DE1": {
+      "casts": 55,
+      "name": "Buried Memory"
+    },
+    "night|random|random|weave_DE2": {
+      "casts": 7,
+      "name": "Obsidian Fang"
+    },
+    "night|random|skip|bolt": {
+      "casts": 1035,
+      "name": "Heartseeker"
+    },
+    "night|random|skip|dawn": {
+      "casts": 102,
+      "name": "Eclipse"
+    },
+    "night|random|skip|mend": {
+      "casts": 2550,
+      "name": "Blood Offering"
+    },
+    "night|random|skip|pulse": {
+      "casts": 929,
+      "name": "Pulse"
+    },
+    "night|random|skip|scry": {
+      "casts": 761,
+      "name": "Forbidden Pact"
+    },
+    "night|random|skip|shard": {
+      "casts": 1804,
+      "name": "Night Fang"
+    },
+    "night|random|skip|study": {
+      "casts": 223,
+      "name": "Grave Bargain"
+    },
+    "night|random|skip|twin": {
+      "casts": 1616,
+      "name": "Siphon"
+    },
+    "night|random|skip|ward": {
+      "casts": 991,
+      "name": "Soul Feast"
+    },
+    "night|random|skip|weave_DB0": {
+      "casts": 1753,
+      "name": "Blood Hex"
+    },
+    "night|random|skip|weave_DB1": {
+      "casts": 1334,
+      "name": "Grave Thirst"
+    },
+    "night|random|skip|weave_DB2": {
+      "casts": 774,
+      "name": "Scarlet Pact"
+    }
+  }
+}
