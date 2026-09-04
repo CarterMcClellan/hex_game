@@ -4,6 +4,10 @@ A playable Godot 4.6.3 card-game demo. Arrange elemental gems on a seven-hex boa
 
 ![Combat screen](docs/battle-preview.png)
 
+## Browser version
+
+A browser export and GitHub Pages workflow are included. See [Web build and deployment](docs/WEB.md) for the one-time Pages setup and local preview instructions.
+
 ## Run from source
 
 Import `source/project.godot` in Godot 4.6.3 and press **F5** to run the project. Alternatively, from the repository root:
