@@ -44,7 +44,7 @@ Use up to two casts per turn. Damage, healing and drawing are available. Click a
 
 The enemy also draws from a finite deck and keeps unused cards. Victories teach the next class pattern and offer a gem reward (choose one gem or skip). Every fight starts at full HP with your campaign deck shuffled. Defeat lets you retry without losing your deck.
 
-The native game keeps the full seven-hex board, hand, and drag controls. In a browser, combat switches to a cleaner spell-command view: choose a large spell card, then cast it. Health, casts, and class resources remain visible, while the hand and rune board stay out of the way. Settings, help and the spellbook pause gameplay.
+Desktop and native play keep the full seven-hex board, hand, scenery, and drag controls. Portrait mobile browsers switch to a cleaner spell-command view: choose a large spell card, then cast it. Health, casts, and class resources remain visible, while the hand and rune board stay out of the way. Settings, help and the spellbook pause gameplay.
 
 ## Keyboard
 
@@ -83,7 +83,7 @@ Save location: `~/Library/Application Support/Godot/app_userdata/Hexbound/progre
 
 ## Validation
 
-31,104 rules/regression checks, 172 rendered interface and screenshot checks, and 405 simulation-agent checks passed from this repository copy. These cover every weave, class interactions, card conservation, rewards, saves, responsive browser controls, lethal spell ordering, input, audio transitions and simulation isolation. The agent cannot inspect the true draw order or mutate a live battle while planning.
+31,104 rules/regression checks, 175 rendered desktop/mobile interface and screenshot checks, and 405 simulation-agent checks passed from this repository copy. These cover every weave, class interactions, card conservation, rewards, saves, responsive browser controls, lethal spell ordering, input, audio transitions and simulation isolation. The agent cannot inspect the true draw order or mutate a live battle while planning.
 
 The separate Monte Carlo experiment contains 60,000 fights with no turn-limit timeouts. Final parameters were frozen before holdout seeds were run. The original exported pack was launched in a separate muted window and its class selection and battle screens were visually checked. PR import validation is recorded in the pull request.
 

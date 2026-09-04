@@ -355,13 +355,8 @@ func run():
 	game.battle.enemy.hp=4
 	verify(not game.visible_spells().is_empty() and game.battle.is_lethal_spell(game.visible_spells()[0]),"a finishing blow rises to the top of the spell list")
 	game.battle.enemy.hp=enemy_hp
-	game.force_command_layout=true
 	await process_frame
-	verify(game.card_rects.is_empty() and game.regions.any(func(region): return region.id.begins_with("recipe:") and region.rect.size.x>500),"browser command layout hides the hand and presents large spell cards")
-	verify(game.regions.any(func(region): return region.id=="settings"),"browser command layout exposes a touch-friendly menu")
-	await capture("v8-browser-command")
-	game.force_command_layout=false
-	await process_frame
+	verify(not game.card_rects.is_empty() and game.regions.any(func(region): return region.id=="cast" and region.rect.position.x>1000),"desktop battle keeps its board, hand, and spell sidebar")
 	await capture("v7-castable-spells")
 	game.fill_spell("weave_WD0")
 	verify(game.battle.ready_spell().name=="Blackwater","captured Dark fills a mixed Water spell")

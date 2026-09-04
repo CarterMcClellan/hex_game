@@ -1,6 +1,6 @@
 # Play in a browser
 
-The game exports to a static website with Godot 4.6.3. It uses the same classes, campaign, spell pool and combat rules as the native game. The responsive browser interface fills the window and uses large, touch-friendly spell cards instead of showing the hand and rune board. A visible Menu button replaces the need for Escape on touch devices.
+The game exports to a static website with Godot 4.6.3. It uses the same classes, campaign, spell pool and combat rules as the native game. Desktop browsers retain the complete board, hand, scenery, and sidebar. Portrait phone screens use large, touch-friendly spell cards instead of showing the hand and rune board, with a visible Menu button replacing the need for Escape.
 
 ## GitHub Pages
 

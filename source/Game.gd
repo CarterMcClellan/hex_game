@@ -39,6 +39,7 @@ var screen = "map"
 var unlocked = 0
 var class_id = ""
 var campaign_deck = {}
+var spell_filter = "all"
 var book_scope = "deck"
 var book_element = ""
 var spell_page = 0
@@ -70,6 +71,7 @@ var audio = AudioStreamPlayer.new()
 var sounds = {}
 var test_mode = false
 var force_command_layout = false
+var last_window_size = Vector2i.ZERO
 var screenshot_path = ""
 var last_hover_id = ""
 var save_file = "user://progress.cfg"
@@ -129,6 +131,7 @@ func _ready():
 			test_mode = true
 			start_fight(int(arg.trim_prefix("--battle=")))
 		if arg == "--command-layout": force_command_layout = true
+	update_web_content_scale()
 	if not screenshot_path.is_empty(): capture_later()
 	update_music()
 	get_window().title = "The Hex Game"
@@ -175,6 +178,8 @@ func save_progress():
 		DirAccess.rename_absolute(ProjectSettings.globalize_path(temporary),ProjectSettings.globalize_path(save_file))
 
 func _process(delta):
+	if (OS.has_feature("web") or force_command_layout) and DisplayServer.window_get_size() != last_window_size:
+		update_web_content_scale()
 	elapsed += delta
 	river_material.set_shader_parameter("flow_time",elapsed)
 	scenery.texture = clearing_art if screen == "battle" else map_art
@@ -427,7 +432,14 @@ func actor_tile(id,center,actor,who,casts_left,capacity,mood):
 	hp_bar(actor,Rect2(center.x-width/2,center.y+BOARD_RADIUS+2,width,29),who)
 
 func uses_command_layout():
-	return OS.has_feature("web") or force_command_layout
+	if not OS.has_feature("web") and not force_command_layout: return false
+	var window_size = DisplayServer.window_get_size()
+	return window_size.y > window_size.x*1.05
+
+func update_web_content_scale():
+	if not OS.has_feature("web") and not force_command_layout: return
+	last_window_size = DisplayServer.window_get_size()
+	get_window().content_scale_aspect = Window.CONTENT_SCALE_ASPECT_EXPAND if last_window_size.y > last_window_size.x*1.05 else Window.CONTENT_SCALE_ASPECT_KEEP
 
 func command_is_portrait():
 	var view = size
@@ -623,7 +635,10 @@ func mini_pattern(pattern,origin,radius=8.0):
 
 func visible_spells():
 	if battle==null: return []
-	return battle.castable_spells()
+	var choices=battle.castable_spells()
+	if spell_filter=="match": return choices.filter(func(recipe): return not R.best_fit(battle.board,recipe).is_empty())
+	if spell_filter=="weaves": return choices.filter(func(recipe): return recipe.get("weave",false))
+	return choices
 
 func book_spells():
 	var recipes=R.rune_catalog(class_id) if book_scope=="all" else R.player_spells(class_id,campaign_deck)
@@ -632,15 +647,17 @@ func book_spells():
 
 func draw_spell_panel():
 	panel(Rect2(1005,57,401,797),PAPER,INK,15)
-	text_at("Castable spells",Vector2(1031,106),35,INK,true)
+	text_at("Known spells",Vector2(1031,106),35,INK,true)
 	line(Vector2(1029,129),Vector2(1382,129),LINE,2)
 	last_hover_id = ""
 	var visible=visible_spells()
+	var filters=[["all","All"],["ready","Ready"],["match","Match"],["weaves","Weaves"]]
+	for i in range(filters.size()): button(Rect2(1027+i*89,134,83,27),filters[i][1],"filter:"+filters[i][0],spell_filter==filters[i][0])
 	var per_page = spells_per_page()
 	spell_page=clampi(spell_page,0,maxi(0,int((visible.size()-1)/per_page)))
 	for i in range(mini(per_page,visible.size()-spell_page*per_page)):
 		var s=visible[i+spell_page*per_page]
-		var row=Rect2(1024,143+i*56,362,52)
+		var row=Rect2(1024,173+i*53,362,49)
 		var exact=battle.ready_spell().get("id","")==s.id
 		var selected=preview_id==s.id or row.has_point(mouse)
 		if row.has_point(mouse): last_hover_id=s.id
@@ -741,6 +758,7 @@ func draw_drag():
 	if e != "": token(e,mouse,43,0.9)
 
 func start_fight(index):
+	spell_filter="all"
 	if class_id == "":
 		modal="class"
 		return
@@ -898,6 +916,9 @@ func activate(id):
 	elif id == "deck": modal="deck"
 	elif id == "spells_prev": spell_page=maxi(0,spell_page-1)
 	elif id == "spells_next": spell_page=mini(maxi(0,int((visible_spells().size()-1)/spells_per_page())),spell_page+1)
+	elif id.begins_with("filter:"):
+		spell_filter=id.trim_prefix("filter:")
+		spell_page=0
 	elif id.begins_with("book_scope:"):
 		book_scope=id.trim_prefix("book_scope:")
 		book_page=0
@@ -1291,6 +1312,9 @@ func fill_spell(id):
 	for s in battle.learned:
 		if s.id != id: continue
 		var visible=visible_spells()
+		if not visible.has(s):
+			spell_filter="all"
+			visible=visible_spells()
 		if visible.has(s): spell_page=int(visible.find(s)/spells_per_page())
 		hand_offset=0
 		if battle.arrange(s):
